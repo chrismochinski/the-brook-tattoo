@@ -1,5 +1,62 @@
-@import './Globals/GlobalStyles.scss';
+@import "../Globals/GlobalStyles.scss";
 
 .contactFormContainer {
-    
+  .contactForm {
+    width: clamp(300px, 50vw, 600px);
+    margin-inline: auto;
+    backdrop-filter: blur(8px);
+    background-color: $trueBlack;
+    padding: 0.75em 1.5em 1em;
+    border-radius: 0.5em;
+    min-height: 450px;
+    border: 2px solid #ffffff40;
+    label,
+    .subLabel {
+      font-size: 1.25rem;
+      font-family: $poppins;
+      font-weight: 500;
+      color: $white;
+    }
+    .subLabel {
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+    input {
+      &[type="text"],
+      &[type="email"],
+      &[type="tel"],
+      &[type="number"] {
+        line-height: 1.25em;
+        font-size: clamp(1.125rem, 5cqi, 1.25rem);
+        font-weight: 400;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $white;
+        color: $white;
+        margin: 0.5em;
+        padding: 0.35em;
+        letter-spacing: 0.03em;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    textarea {
+      line-height: 1.25em;
+      font-size: clamp(1.125rem, 5cqi, 1.25rem);
+      font-weight: 400;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid $white;
+      color: $white;
+      margin: 0.5em;
+      padding: 0.35em;
+      letter-spacing: 0.03em;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
 }
