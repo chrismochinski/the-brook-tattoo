@@ -1,57 +1,61 @@
-import fetch from 'node-fetch';
+import sgMail from '@sendgrid/mail';
+
+const apiKey = process.env.SENDGRID_API_KEY;
+if (!apiKey) {
+  throw new Error('SENDGRID_API_KEY is not defined');
+}
+sgMail.setApiKey(apiKey);
 
 exports.handler = async (event: any) => {
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+    return {
+      statusCode: 405,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: "Method Not Allowed" })
+    };
   }
 
   const { name, email, phone, concept, artist } = JSON.parse(event.body);
   const subject = `The Brook Contact Submission from ${name}`;
+  let recipientEmail = determineRecipient(artist);
 
-  // Determine recipient based on the artist selection
-  let recipientEmail;
-  switch (artist) {
-    case "Jimbo":
-      //   recipientEmail = "jamesermilio01@gmail.com"; //revisit uncomment
-      recipientEmail = "cmochinski@gmail.com"; //deletelater
-      break;
-    case "Carlie":
-      //   recipientEmail = "tattoos.by.cr@gmail.com"; //revisit uncomment
-      recipientEmail = "mo@readygoes.com"; //deletelater
-      break;
-    case "Not Sure":
-      //   recipientEmail = "jamesermilio01@gmail.com, tattoos.by.cr@gmail.com"; //revisit uncomment
-      recipientEmail = "cmochinski@gmail.com, mo@readygoes.com"; //deletelater
-      break;
-    default:
-      recipientEmail = "mo@chrismochinski.com"; // default or error handling
-  }
+  const msg = {
+    to: recipientEmail,
+    from: 'mo@chrismochinski.com', // This should be a verified sender in SendGrid
+    subject: subject,
+    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nConcept: ${concept}`,
+    html: `<strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone}<br><strong>Concept:</strong> ${concept}`,
+  };
 
-  // Simulate an email sending
   console.log("Sending email to:", recipientEmail);
   console.log("Email content:", { subject, name, email, phone, concept });
 
-  // Here you would use an email API to actually send the email
-  // Example using fetch to send through a mail API
-  const response = await fetch("https://api.emailservice.com/send", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer your-api-token",
-    },
-    body: JSON.stringify({
-      to: recipientEmail,
-      subject: subject,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nConcept: ${concept}`,
-    }),
-  });
-
-  if (!response.ok) {
-    return { statusCode: response.status, body: "Failed to send email" };
+  try {
+    await sgMail.send(msg);
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: `Email sent successfully to ${recipientEmail}!` })
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      statusCode: 500,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: "Failed to send email" })
+    };
   }
-
-  return {
-    statusCode: 200,
-    body: "Email sent successfully!",
-  };
 };
+
+function determineRecipient(artist: string): string {
+  switch (artist) {
+    case "Jimbo":
+      return "cmochinski@gmail.com";
+    case "Carlie":
+      return "mo@readygoes.com";
+    case "Not Sure":
+      return "cmochinski@gmail.com, mo@readygoes.com";
+    default:
+      return "mo@chrismochinski.com";
+  }
+}
