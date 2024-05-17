@@ -25,9 +25,13 @@
         align-self: flex-start;
         text-align: left;
         text-transform: uppercase;
+        display: inline;
         &.conceptLabel {
           margin-top: 0.5em;
         }
+      }
+      label {
+        margin-top: 0.1em;
       }
       .subLabel {
         display: none;
@@ -47,7 +51,7 @@
         font-weight: 300;
         color: $white;
         letter-spacing: 0.03em;
-        margin: 0.4em 0 0.6em;
+        margin: 0.4em 0 0.2em;
         padding: 0 0.2em 0.1em;
 
         &:focus {
@@ -86,21 +90,27 @@
         }
       }
 
-      select {
-        cursor: pointer;
+      .selectContainer {
+        margin: 4.5em 0;
         width: 122px;
-        font-family: $poppins;
-        font-size: clamp(17px, 6cqi, 20px);
-        font-weight: 300;
-        color: $white;
-        letter-spacing: 0.03em;
-        margin: 3.5em 0 4em;
-        padding: 0 0.2em 0.05em;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid $white;
-        &:focus {
-          outline: none;
+        display: flex;
+        gap: 0.35em;
+        align-items: flex-end;
+        select {
+          cursor: pointer;
+          font-family: $poppins;
+          font-size: clamp(17px, 6cqi, 20px);
+          font-weight: 300;
+          color: $white;
+          letter-spacing: 0.03em;
+          margin: 0;
+          padding: 0 0.2em 0.05em 0;
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid $white;
+          &:focus {
+            outline: none;
+          }
         }
       }
 
@@ -146,11 +156,11 @@
         }
 
         .artistImageWrapper {
-          width: 152px;
+          width: 164px;
           position: absolute;
           aspect-ratio: 2/3;
-          bottom: 22px;
-          right: 26px;
+          bottom: 16px;
+          right: 28px;
           display: none;
           .artistImage {
             border-radius: 0.3em;
@@ -163,6 +173,21 @@
           }
         }
       }
+
+
+      .error {
+        display: inline;
+        color: $firebrick;
+        font-family: $poppins;
+        font-size: 13px;
+        margin-top: 0;
+        text-align: left;
+        &.selectError {
+          margin-top: 2px;
+        }
+      }
+
+
       // IMPORTANT - ON SUCCESS MESSAGE
       &.hide {
         opacity: 0;
