@@ -1,0 +1,18 @@
+@import "../Globals/GlobalStyles.scss";
+
+.tempHeaderContainer {
+    height: clamp(160px, 26vh, 220px);
+    margin-block: min(2em, 3vh);
+    column-gap: min(3vw, 1.5em);
+    img {
+        height: 100%;
+    }
+
+    .artistImage {
+
+    }
+
+    .logoImage {
+    
+    }
+}

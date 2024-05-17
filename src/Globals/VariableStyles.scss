@@ -1,21 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
 @font-face {
   font-family: "LogoType";
-  src: url("../fonts/TypewriterSpoolXRXEx-Italic.otf");
+  src: url("../../public/assets/fonts/TypewriterSpoolXRXEx-Italic.otf");
 }
 
 @font-face {
   font-family: "LogoTypeAlt";
-  src: url("../fonts/TravelingTypewriter.ttf");
+  src: url("../../public/assets/fonts/TravelingTypewriter.ttf");
 }
 
 // global fonts based on above imports
+
+$bitter: "Bitter", serif;
+$poppins: "Poppins", sans-serif;
+
 $logoType: "LogoType", Arial, sans-serif;
 $logoTypeAlt: "LogoTypeAlt", Arial, sans-serif;
+
+
 
 // global colors
 $trueBlack: #000000;
 $black: #191716;
 $blood: #66101f;
+$firebrick: #b22222;
 $gunz: #323031;
 $sword: #9f9f9f;
 $white: #ffffff;
