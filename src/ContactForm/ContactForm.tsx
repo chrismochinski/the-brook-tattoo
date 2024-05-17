@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ContactForm.scss";
-// import JimboMain from "../../src/Images/jimbo-main.jpeg";
-// import CarlieMain from "../../src/Images/carlie-main.jpeg";
+import JimboMain from "../../src/Images/jimbo-main.jpeg";
+import CarlieMain from "../../src/Images/carlie-main.jpeg";
 
 type FormData = {
   name: string;
@@ -164,6 +164,24 @@ export function ContactForm() {
             }}>
             <div className="submitButton">
               <h4>Send</h4>
+            </div>
+
+            <div
+              className={`artistImageWrapper  ${
+                formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
+              }`}>
+              {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
+              <img
+                className="artistImage"
+                src={
+                  formData.artist === "Jimbo"
+                    ? JimboMain
+                    : formData.artist === "Carlie"
+                    ? CarlieMain
+                    : ""
+                }
+                alt={formData.artist}
+              />
             </div>
           </div>
         </form>
