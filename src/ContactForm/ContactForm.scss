@@ -63,8 +63,9 @@
           background-color: transparent;
           border: none;
           border-bottom: 1px solid $white;
-          transition: border-bottom 120ms ease;
+          transition: border-bottom 350ms ease;
           &:focus {
+            transition: border-bottom 150ms ease;
             border-bottom: 1px solid $firebrick;
           }
         }
@@ -77,8 +78,9 @@
         border: 1px solid #ffffff60;
         resize: none;
         padding: 0.17em 0.37em;
-
+        transition: border 350ms ease;
         &:focus {
+          transition: border 150ms ease;
           outline: none;
           border: 1px solid $firebrick;
         }
@@ -190,7 +192,6 @@
         font-weight: 500;
         margin: 0.2em 0 0.1em;
         letter-spacing: 0.16em;
-        transition: filter 750ms ease 150ms, opacity 400ms ease 250ms, transform 500ms ease 150ms;
       }
       p {
         opacity: 0;
@@ -200,8 +201,58 @@
         font-size: clamp(15px, 5cqi, 18px);
         font-weight: 300;
         margin: 0;
-        transition: filter 750ms ease 350ms, opacity 400ms ease 450ms, transform 500ms ease 350ms;
       }
+
+      .backButtonContainer {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(3em);
+        filter: blur(18px);
+        z-index: 10;
+        width: 98px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-inline: auto;
+        margin-top: 0.8em;
+        cursor: pointer;
+        .backButton {
+          width: 90px;
+          height: 42px;
+          background-color: $firebrick;
+          border-radius: 14px;
+          border: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 400ms ease;
+          h4 {
+            transition: all 400ms ease;
+            text-transform: uppercase;
+            font-family: $poppins;
+            font-weight: 600;
+            font-size: clamp(15px, 4cqi, 17px);
+            color: $white;
+          }
+        }
+
+        &:hover {
+          transition: all 220ms ease;
+          .backButton {
+            transition: all 220ms ease;
+            background-color: $blood;
+            width: 95px;
+            height: 40px;
+            h4 {
+              transition: all 220ms ease;
+              transform: scale(1.125);
+            }
+          }
+        }
+      }
+
       &.show {
         visibility: visible;
         p,
@@ -209,6 +260,20 @@
           opacity: 1;
           filter: blur(0);
           transform: translateY(0);
+        }
+        h2 {
+          transition: filter 750ms ease 150ms, opacity 400ms ease 250ms, transform 500ms ease 150ms;
+        }
+        p {
+          transition: filter 750ms ease 350ms, opacity 400ms ease 450ms, transform 500ms ease 350ms;
+        }
+        .backButtonContainer {
+          pointer-events: auto;
+          opacity: 1;
+          filter: blur(0);
+          visibility: visible;
+          transform: translateY(0);
+          transition: filter 800ms ease 500ms, opacity 500ms ease 600ms, transform 600ms ease 500ms;
         }
       }
     }

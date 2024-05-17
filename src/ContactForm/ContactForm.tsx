@@ -72,12 +72,23 @@ export function ContactForm() {
     });
   };
 
+  const handleGoBack = () => {
+    setFormSuccess(false);
+    clearFormData();
+  };
+
   return (
     <div className="section contactFormContainer mt-2">
       <div className="formWidthSetter">
         <div className={`successMessage ${formSuccess && "show"}`}>
           <h2>Success!</h2>
           <p>We'll be in touch soon.</p>
+
+          <div className="backButtonContainer" tabIndex={0} role="button" onClick={handleGoBack}>
+            <div className="backButton">
+              <h4>Go Back</h4>
+            </div>
+          </div>
         </div>
         <form
           className={`column contactForm ${formSuccess && "hide"}`}
