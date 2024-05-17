@@ -1,7 +1,7 @@
 // import { TypewriterLogo } from "../TypewriterLogo/TypewriterLogo";
 import "./TempHeader.scss";
-import JimboMain from "../../src/Images/jimbo-main.jpeg";
-import CarlieMain from "../../src/Images/carlie-main.jpeg";
+// import JimboMain from "../../src/Images/jimbo-main.jpeg";
+// import CarlieMain from "../../src/Images/carlie-main.jpeg";
 import Logo from "../../src/Images/brook-logo-nobg-rough.png";
 
 export function TempHeader() {
