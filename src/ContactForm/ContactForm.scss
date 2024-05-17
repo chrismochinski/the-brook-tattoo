@@ -6,11 +6,12 @@
     position: relative;
     width: clamp(314px, 90vw, 430px);
     margin-inline: auto;
-    backdrop-filter: blur(8px);
-    background-color: $trueBlack;
+    backdrop-filter: blur(9px);
+    background-color: #00000082;
     padding: 1.5em 0 2.5em;
     border-radius: 0.57em;
     border: 2px solid #ffffff40;
+
     .contactForm {
       align-items: flex-start;
       width: min(83%, 300px);
@@ -185,9 +186,10 @@
         transform-origin: center;
         transform: translateY(3em);
         filter: blur(18px);
-        font-size: clamp(24px, 10cqi, 30px);
+        font-size: clamp(26px, 12cqi, 33px);
         font-weight: 500;
         margin: 0.2em 0 0.1em;
+        letter-spacing: 0.16em;
         transition: filter 750ms ease 150ms, opacity 400ms ease 250ms, transform 500ms ease 150ms;
       }
       p {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ContactForm.scss";
-import JimboMain from "../../src/Images/jimbo-main.jpeg";
-import CarlieMain from "../../src/Images/carlie-main.jpeg";
+import JimboMain from "../../src/Images/jimbo-masked.png";
+import CarlieMain from "../../src/Images/carlie-masked.png";
 
 type FormData = {
   name: string;
