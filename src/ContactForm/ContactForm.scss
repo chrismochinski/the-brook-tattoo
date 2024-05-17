@@ -71,14 +71,14 @@
       }
 
       select {
-        width: 128px;
+        width: 122px;
         font-family: $poppins;
-        font-size: clamp(18px, 6cqi, 21px);
+        font-size: clamp(17px, 6cqi, 20px);
         font-weight: 300;
         color: $white;
         letter-spacing: 0.03em;
-        margin: 1em 0;
-        padding: 0 0.2em 0.1em;
+        margin: 3em 0;
+        padding: 0 0.2em 0.05em;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid $white;
@@ -100,7 +100,7 @@
           background-color: $firebrick;
           border-radius: 14px;
           border: none;
-          margin: 1em 0 0;
+          margin: 2em 0;
           display: flex;
           justify-content: center;
           align-items: center;
