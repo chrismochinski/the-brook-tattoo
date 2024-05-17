@@ -4,7 +4,7 @@
   container-type: inline-size;
   .formWidthSetter {
     position: relative;
-    width: clamp(320px, 90vw, 430px);
+    width: clamp(314px, 90vw, 430px);
     margin-inline: auto;
     backdrop-filter: blur(8px);
     background-color: $trueBlack;
@@ -13,7 +13,7 @@
     border: 2px solid #ffffff40;
     .contactForm {
       align-items: flex-start;
-      width: min(90%, 300px);
+      width: min(83%, 300px);
       margin-inline: auto;
       label,
       .subLabel {
@@ -158,4 +158,10 @@
       }
     }
   }
+}
+
+@media (max-width: 575px) {
+    .contactFormContainer {
+        padding-inline: 0 !important;
+    }
 }
