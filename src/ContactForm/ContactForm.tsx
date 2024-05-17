@@ -1,12 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./ContactForm.scss";
 
 export function ContactForm() {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [concept, setConcept] = useState("");
+    const [artist, setArtist] = useState("");  
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();  
+    const form = event.target.form;  
+    form.submit();  
+
+  };
 
   return (
-    <div className="section contactFormContainer">
+    <div className="section contactFormContainer mt-4">
       <form
         className="column contactForm"
         name="contact"
@@ -24,17 +34,34 @@ export function ContactForm() {
         <label htmlFor="phone">Phone</label>
         <input id="phone" type="tel" name="phone" />
 
-        <label htmlFor="concept">Concept</label>
-        <p className="subLabel">(500 char max)</p>
+        <label className="conceptLabel" htmlFor="concept">
+          Concept <span className="subLabel">(500 char)</span>
+        </label>
+
         <textarea id="concept" name="concept" maxLength={500} required></textarea>
 
-        <label htmlFor="artist">Artist:</label>
+      
         <select id="artist" name="artist">
+          <option value="Artist" disabled selected>
+            ARTIST
+          </option>
           <option value="jamesermilio01@gmail.com">Jimbo</option>
           <option value="tattoos.by.cr@gmail.com">Carlie</option>
+          <option value="tattoos.by.cr@gmail.com">Not Sure</option>
         </select>
 
-        <button type="submit">Send</button>
+        <div className="submitButton"
+             tabIndex={0}
+             role="button"
+             onClick={handleSubmit}
+             onKeyPress={(event) => {
+               if (event.key === 'Enter' || event.key === ' ') {
+                 handleSubmit(event);
+               }
+             }}
+        >
+          Send
+        </div>
       </form>
     </div>
   );

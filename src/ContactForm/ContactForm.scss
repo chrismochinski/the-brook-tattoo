@@ -1,62 +1,103 @@
 @import "../Globals/GlobalStyles.scss";
 
 .contactFormContainer {
+  container-type: inline-size;
   .contactForm {
-    width: clamp(300px, 50vw, 600px);
+    width: clamp(320px, 90vw, 440px);
     margin-inline: auto;
     backdrop-filter: blur(8px);
     background-color: $trueBlack;
-    padding: 0.75em 1.5em 1em;
+    padding: 1.5em 0 2.5em;
     border-radius: 0.5em;
     min-height: 450px;
     border: 2px solid #ffffff40;
     label,
     .subLabel {
-      font-size: 1.25rem;
+      font-size: clamp(18px, 5cqi, 22px);
       font-family: $poppins;
       font-weight: 500;
-      color: $white;
+      color: $sword;
+      align-self: flex-start;
+      width: min(90%, 280px);
+      text-align: left;
+      margin-inline: auto;
+      text-transform: uppercase;
+      &.conceptLabel {
+        margin-top: 1.25em;
+      }
     }
     .subLabel {
       font-size: 0.8rem;
       font-weight: 300;
     }
+
+    input,
+    textarea {
+        font-family: $poppins;
+        width: min(90%, 290px);
+        line-height: normal;
+        font-size: clamp(14px, 4cqi, 16px);
+        font-weight: 300;
+        color: $white;
+        letter-spacing: 0.03em;
+        margin: 0.4em 0 0.6em;
+        padding: 0 0.35em .2em;
+      &:focus {
+        outline: none;
+      }
+    }
+
     input {
       &[type="text"],
       &[type="email"],
       &[type="tel"],
       &[type="number"] {
-        line-height: 1.25em;
-        font-size: clamp(1.125rem, 5cqi, 1.25rem);
-        font-weight: 400;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid $white;
-        color: $white;
-        margin: 0.5em;
-        padding: 0.35em;
-        letter-spacing: 0.03em;
-        &:focus {
-          outline: none;
-        }
       }
     }
 
     textarea {
-      line-height: 1.25em;
-      font-size: clamp(1.125rem, 5cqi, 1.25rem);
-      font-weight: 400;
-      background-color: transparent;
-      border: none;
-      border-bottom: 1px solid $white;
-      color: $white;
-      margin: 0.5em;
-      padding: 0.35em;
-      letter-spacing: 0.03em;
+      background-color: #ffffff11;
+      height: 150px;
+      border-radius: 0.3em;
+      border: 1px solid #ffffff60;
+      resize: none;
+    }
 
-      &:focus {
-        outline: none;
-      }
+    select {
+        width: 140px;
+        font-family: $poppins;
+        font-size: clamp(18px, 6cqi, 21px);
+        font-weight: 300;
+        color: $white;
+        letter-spacing: 0.03em;
+        margin: 1em 0;
+        padding: 0 0.35em 0.15em;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $white;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .submitButton {
+        cursor: pointer;
+        text-transform: uppercase;
+        font-family: $poppins;
+        font-weight: 600;
+        font-size: clamp(16px, 4cqi, 20px);
+        color: $white;
+        background-color: $firebrick;
+        border-radius: 14px;
+        padding: 0.6em 1.2em;
+        border: none;
+        margin: 1em 0 0;
+        &:hover {
+            background-color: $blood;
+        }
     }
   }
 }
