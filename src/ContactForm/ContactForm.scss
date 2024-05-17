@@ -2,125 +2,130 @@
 
 .contactFormContainer {
   container-type: inline-size;
-  .contactForm {
-    width: clamp(320px, 90vw, 440px);
+  .formWidthSetter {
+    position: relative;
+    width: clamp(320px, 90vw, 430px);
     margin-inline: auto;
     backdrop-filter: blur(8px);
     background-color: $trueBlack;
     padding: 1.5em 0 2.5em;
-    border-radius: 0.5em;
-    min-height: 450px;
+    border-radius: 0.57em;
     border: 2px solid #ffffff40;
-    label,
-    .subLabel {
-      font-size: clamp(18px, 5cqi, 22px);
-      font-family: $poppins;
-      font-weight: 500;
-      color: $sword;
-      align-self: flex-start;
-      width: min(90%, 280px);
-      text-align: left;
+    .contactForm {
+      align-items: flex-start;
+      width: min(90%, 300px);
       margin-inline: auto;
-      text-transform: uppercase;
-      &.conceptLabel {
-        margin-top: 1.25em;
+      label,
+      .subLabel {
+        font-size: clamp(18px, 5cqi, 22px);
+        font-family: $poppins;
+        font-weight: 500;
+        color: $sword;
+        align-self: flex-start;
+        text-align: left;
+        text-transform: uppercase;
+        &.conceptLabel {
+          margin-top: 0.5em;
+        }
       }
-    }
-    .subLabel {
-      font-size: 0.8rem;
-      font-weight: 300;
-    }
-
-    input,
-    textarea {
-      font-family: $poppins;
-      width: min(90%, 290px);
-      line-height: normal;
-      font-size: clamp(14px, 4cqi, 16px);
-      font-weight: 300;
-      color: $white;
-      letter-spacing: 0.03em;
-      margin: 0.4em 0 0.6em;
-      padding: 0 0.35em 0.2em;
-      &:focus {
-        outline: none;
+      .subLabel {
+        font-size: 0.55em;
+        font-weight: 300;
       }
-    }
 
-    input {
-      &[type="text"],
-      &[type="email"],
-      &[type="tel"],
-      &[type="number"] {
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid $white;
-      }
-    }
+      input,
+      textarea {
+        font-family: $poppins;
+        width: 100%;
+        line-height: normal;
+        font-size: clamp(14px, 4cqi, 16px);
+        font-weight: 300;
+        color: $white;
+        letter-spacing: 0.03em;
+        margin: 0.4em 0 0.6em;
+        padding: 0 0.2em 0.1em;
 
-    textarea {
-      background-color: #ffffff11;
-      height: 150px;
-      border-radius: 0.3em;
-      border: 1px solid #ffffff60;
-      resize: none;
-    }
-
-    select {
-      width: 140px;
-      font-family: $poppins;
-      font-size: clamp(18px, 6cqi, 21px);
-      font-weight: 300;
-      color: $white;
-      letter-spacing: 0.03em;
-      margin: 1em 0;
-      padding: 0 0.35em 0.15em;
-      background-color: transparent;
-      border: none;
-      border-bottom: 1px solid $white;
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .submitButtonContainer {
-      width: 112px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      .submitButton {
-        width: 100px;
-        height: 50px;
-        background-color: $firebrick;
-        border-radius: 14px;
-        border: none;
-        margin: 1em 0 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 500ms ease;
-        h4 {
-          transition: all 500ms ease;
-          text-transform: uppercase;
-          font-family: $poppins;
-          font-weight: 600;
-          font-size: clamp(16px, 4cqi, 20px);
-          color: $white;
+        &:focus {
+          outline: none;
         }
       }
 
-      &:hover {
-        transition: all 300ms ease;
+      input {
+        &[type="text"],
+        &[type="email"],
+        &[type="tel"],
+        &[type="number"] {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid $white;
+        }
+      }
+
+      textarea {
+        background-color: #ffffff11;
+        height: 150px;
+        border-radius: 0.3em;
+        border: 1px solid #ffffff60;
+        resize: none;
+        padding: 0.17em 0.37em;
+      }
+
+      select {
+        width: 128px;
+        font-family: $poppins;
+        font-size: clamp(18px, 6cqi, 21px);
+        font-weight: 300;
+        color: $white;
+        letter-spacing: 0.03em;
+        margin: 1em 0;
+        padding: 0 0.2em 0.1em;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $white;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .submitButtonContainer {
+        width: 112px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
         .submitButton {
-          transition: all 300ms ease;
-          background-color: $blood;
-          width: 111px;
-          height: 42px;
+          width: 100px;
+          height: 50px;
+          background-color: $firebrick;
+          border-radius: 14px;
+          border: none;
+          margin: 1em 0 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 400ms ease;
           h4 {
-            transition: all 300ms ease;
-            transform: scale(1.25);
+            transition: all 400ms ease;
+            text-transform: uppercase;
+            font-family: $poppins;
+            font-weight: 600;
+            font-size: clamp(16px, 4cqi, 20px);
+            color: $white;
+          }
+        }
+
+        &:hover {
+          transition: all 220ms ease;
+          .submitButton {
+            transition: all 220ms ease;
+            background-color: $blood;
+            width: 110px;
+            height: 44px;
+            h4 {
+              transition: all 220ms ease;
+              transform: scale(1.125);
+            }
           }
         }
       }

@@ -32,48 +32,81 @@ export function ContactForm() {
     console.log("Form data:", formData);
 
     // important //revisit //idea submit data to the backend or use Netlify functions to handle email
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      concept: "",
+      artist: "",
+    });
   };
 
   // who does email go to?
   const determineRecipient = (artist: string): string => {
-    if (artist === "jamesermilio01@gmail.com" || artist === "tattoos.by.cr@gmail.com") {
-      return artist;
+    if (artist === "Jimbo") {
+      //   return "jamesermilio01@gmail.com"; //revisit uncomment
+      return "cmochinski@gmail.com"; //deletelater
+    } else if (artist === "Carlie") {
+      //   return "tattoos.by.cr@gmail.com"; //revisit uncomment
+      return "mo@readygoes.com"; //deletelater
     } else {
       // if user selects "Not Sure", value should be BOTH emails
-      return "jamesermilio01@gmail.com, tattoos.by.cr@gmail.com";
+      //   return "jamesermilio01@gmail.com, tattoos.by.cr@gmail.com"; //revisit uncomment
+      return "cmochinski@gmail.com, mo@readygoes.com"; //deletelater
     }
   };
 
   return (
     <div className="section contactFormContainer mt-4">
+        <div className="formWidthSetter">
       <form
         className="column contactForm"
         name="contact"
         method="POST"
         data-netlify="true"
         action="/success">
-        <input type="hidden" name="form-name" value="contact" />
-
         <label htmlFor="name">Name</label>
-        <input id="name" type="text" name="name" required />
+        <input
+          id="name"
+          type="text"
+          name="name"
+          value={formData.name}
+          required
+          onChange={handleChange}
+        />
 
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" name="email" required />
+        <input
+          id="email"
+          type="email"
+          name="email"
+          value={formData.email}
+          required
+          onChange={handleChange}
+        />
 
         <label htmlFor="phone">Phone</label>
-        <input id="phone" type="tel" name="phone" />
+        <input id="phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} />
 
         <label className="conceptLabel" htmlFor="concept">
           Concept <span className="subLabel">(500 char)</span>
         </label>
+        <textarea
+          id="concept"
+          name="concept"
+          value={formData.concept}
+          maxLength={500}
+          required
+          onChange={handleChange}></textarea>
 
-        <textarea id="concept" name="concept" maxLength={500} required></textarea>
-
-        <select id="artist" name="artist" defaultValue="ARTIST">
-          <option value="jamesermilio01@gmail.com">Jimbo</option>
-          <option value="tattoos.by.cr@gmail.com">Carlie</option>
-          {/* if user selects "Not Sure", value should be BOTH emails somehow */}
-          <option value="tattoos.by.cr@gmail.com">Not Sure</option>
+        <select id="artist" name="artist" value={formData.artist} onChange={handleChange} required>
+          <option value="" disabled>
+            ARTIST
+          </option>
+          <option value="Jimbo">Jimbo</option>
+          <option value="Carlie">Carlie</option>
+          <option value="Not Sure">Not Sure</option>
         </select>
 
         <div
@@ -91,6 +124,7 @@ export function ContactForm() {
           </div>
         </div>
       </form>
+      </div>
     </div>
   );
 }
