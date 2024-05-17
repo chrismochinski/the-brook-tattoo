@@ -1,10 +1,12 @@
 import "./App.scss";
-import { TempHome } from "./TempHome/TempHome";
+import { TypewriterLogo } from "./TypewriterLogo/TypewriterLogo";
 
 function App() {
   return (
     <div className="App">
-      <TempHome />
+      <div className="tempHomeContainer">
+        <TypewriterLogo />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import "./TempHome.scss";
+import "./TypewriterLogo.scss";
 
-export function TempHome() {
+export function TypewriterLogo() {
   return (
-    <div className="tempHome centerText">
+    <div className="typewriterLogoText">
       <div className="logoText">
         <h1>___</h1>
         <h1>The</h1>
