@@ -27,14 +27,37 @@ export function ContactForm() {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const recipientEmail = determineRecipient(formData.artist);
-    console.log("Sending to:", recipientEmail);
-    console.log("Form data:", formData);
+    try {
+      const response = await fetch("/.netlify/functions/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          concept: formData.concept,
+          artist: formData.artist,
+        }),
+      });
 
-    // important //revisit //idea submit data to the backend or use Netlify functions to handle email
+      const result = await response.json();
+      if (response.ok) {
+        console.log("Success:", result);
+        // Handle success (e.g., showing a success message)
+      } else {
+        throw new Error(result.error || "Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    clearFormData();
+  };
 
+  const clearFormData = () => {
     setFormData({
       name: "",
       email: "",
@@ -74,7 +97,7 @@ export function ContactForm() {
             data-remove-prefix // revisit
             value={`The Brook Contact Submission from ${formData.name}`}
           />
-          
+
           <label htmlFor="name">Name</label>
           <input
             id="name"
