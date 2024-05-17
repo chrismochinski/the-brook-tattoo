@@ -67,23 +67,8 @@ export function ContactForm() {
     });
   };
 
-  // // who does email go to?
-  // const determineRecipient = (artist: string): string => {
-  //   if (artist === "Jimbo") {
-  //     //   return "jamesermilio01@gmail.com"; //revisit uncomment
-  //     return "cmochinski@gmail.com"; //deletelater
-  //   } else if (artist === "Carlie") {
-  //     //   return "tattoos.by.cr@gmail.com"; //revisit uncomment
-  //     return "mo@readygoes.com"; //deletelater
-  //   } else {
-  //     // if user selects "Not Sure", value should be BOTH emails
-  //     //   return "jamesermilio01@gmail.com, tattoos.by.cr@gmail.com"; //revisit uncomment
-  //     return "cmochinski@gmail.com, mo@readygoes.com"; //deletelater
-  //   }
-  // };
-
   return (
-    <div className="section contactFormContainer mt-4">
+    <div className="section contactFormContainer mt-2">
       <div className="formWidthSetter">
         <form
           className="column contactForm"
@@ -94,7 +79,7 @@ export function ContactForm() {
           <input
             type="hidden"
             name="subject"
-            data-remove-prefix // revisit
+            data-remove-prefix
             value={`The Brook Contact Submission from ${formData.name}`}
           />
 

@@ -4,7 +4,7 @@
   container-type: inline-size;
   .formWidthSetter {
     position: relative;
-    width: clamp(320px, 90vw, 430px);
+    width: clamp(314px, 90vw, 430px);
     margin-inline: auto;
     backdrop-filter: blur(8px);
     background-color: $trueBlack;
@@ -13,7 +13,7 @@
     border: 2px solid #ffffff40;
     .contactForm {
       align-items: flex-start;
-      width: min(90%, 300px);
+      width: min(83%, 300px);
       margin-inline: auto;
       label,
       .subLabel {
@@ -58,6 +58,10 @@
           background-color: transparent;
           border: none;
           border-bottom: 1px solid $white;
+          transition: border-bottom 120ms ease;
+          &:focus {
+            border-bottom: 1px solid $firebrick;
+          }
         }
       }
 
@@ -68,9 +72,15 @@
         border: 1px solid #ffffff60;
         resize: none;
         padding: 0.17em 0.37em;
+
+        &:focus {
+          outline: none;
+          border: 1px solid $firebrick;
+        }
       }
 
       select {
+        cursor: pointer;
         width: 122px;
         font-family: $poppins;
         font-size: clamp(17px, 6cqi, 20px);
@@ -119,8 +129,8 @@
           .submitButton {
             transition: all 220ms ease;
             background-color: $blood;
-            width: 110px;
-            height: 44px;
+            width: 108px;
+            height: 46px;
             h4 {
               transition: all 220ms ease;
               transform: scale(1.125);
@@ -148,4 +158,10 @@
       }
     }
   }
+}
+
+@media (max-width: 575px) {
+    .contactFormContainer {
+        padding-inline: 0 !important;
+    }
 }
