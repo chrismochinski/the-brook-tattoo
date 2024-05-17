@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ContactForm.scss";
-import JimboMain from "../../src/Images/jimbo-main.jpeg";
-import CarlieMain from "../../src/Images/carlie-main.jpeg";
+import JimboMain from "../../src/Images/jimbo-masked.png";
+import CarlieMain from "../../src/Images/carlie-masked.png";
 
 type FormData = {
   name: string;
@@ -19,16 +19,61 @@ export function ContactForm() {
     concept: "",
     artist: "",
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    concept: "",
+    artist: "",
+  });
+  const [characterCount, setCharacterCount] = useState<number>(500);
+  const [formSuccess, setFormSuccess] = useState<boolean>(false);
+
+  const validateField = (name: string, value: string): string => {
+    switch (name) {
+      case "name":
+        return value.trim() === "" ? "Required" : "";
+      case "email":
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid";
+      case "phone":
+        return /^\d{10}$/.test(value) ? "" : "Required";
+      case "concept":
+        return value.trim() === "" ? "Required" : "";
+      case "artist":
+        return value === "" ? "REQUIRED" : "";
+      default:
+        return "";
+    }
+  };
 
   // changing fields
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+    if (name === "concept") setCharacterCount(500 - value.length); // update remaining concept characters
+    setErrors({ ...errors, [name]: validateField(name, value) });
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    // Validate all fields before submission
+    const newErrors = {
+      name: validateField("name", formData.name),
+      email: validateField("email", formData.email),
+      phone: validateField("phone", formData.phone),
+      concept: validateField("concept", formData.concept),
+      artist: validateField("artist", formData.artist),
+    };
+    setErrors(newErrors);
+
+    // Check if there are any errors
+    if (Object.values(newErrors).some((error) => error !== "")) {
+      return; // Exit if there are validation errors
+    }
+
     try {
       const response = await fetch("/.netlify/functions/sendEmail", {
         method: "POST",
@@ -47,6 +92,7 @@ export function ContactForm() {
       const result = await response.json();
       if (response.ok) {
         console.log("Success:", result);
+        setFormSuccess(true);
         // Handle success (e.g., showing a success message)
       } else {
         throw new Error(result.error || "Failed to send email");
@@ -67,11 +113,26 @@ export function ContactForm() {
     });
   };
 
+  const handleGoBack = () => {
+    setFormSuccess(false);
+    clearFormData();
+  };
+
   return (
     <div className="section contactFormContainer mt-2">
       <div className="formWidthSetter">
+        <div className={`successMessage ${formSuccess && "show"}`}>
+          <h2>Success!</h2>
+          <p>We'll be in touch soon.</p>
+
+          <div className="backButtonContainer" tabIndex={0} role="button" onClick={handleGoBack}>
+            <div className="backButton">
+              <h4>Go Back</h4>
+            </div>
+          </div>
+        </div>
         <form
-          className="column contactForm"
+          className={`column contactForm ${formSuccess && "hide"}`}
           name="contact"
           method="POST"
           data-netlify="true"
@@ -83,7 +144,7 @@ export function ContactForm() {
             value={`The Brook Contact Submission from ${formData.name}`}
           />
 
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name {errors.name && <p className="error">{errors.name}</p>}</label>
           <input
             id="name"
             type="text"
@@ -93,7 +154,7 @@ export function ContactForm() {
             onChange={handleChange}
           />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email {errors.email && <p className="error">{errors.email}</p>}</label>
           <input
             id="email"
             type="email"
@@ -102,8 +163,9 @@ export function ContactForm() {
             required
             onChange={handleChange}
           />
+         
 
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">Phone {errors.phone && <p className="error">{errors.phone}</p>}</label>
           <input
             id="phone"
             type="tel"
@@ -111,9 +173,12 @@ export function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
           />
+          
 
           <label className="conceptLabel" htmlFor="concept">
-            Concept <span className="subLabel">(500 char)</span>
+            Concept{" "}
+            <span className={`subLabel ${characterCount < 500 && "show"}`}>({characterCount})</span>
+            {errors.concept && <p className="error">{errors.concept}</p>}
           </label>
           <textarea
             id="concept"
@@ -123,19 +188,25 @@ export function ContactForm() {
             required
             onChange={handleChange}></textarea>
 
-          <select
-            id="artist"
-            name="artist"
-            value={formData.artist}
-            onChange={handleChange}
-            required>
-            <option value="" disabled>
-              ARTIST
-            </option>
-            <option value="Jimbo">Jimbo</option>
-            <option value="Carlie">Carlie</option>
-            <option value="Not Sure">Not Sure</option>
-          </select>
+         
+
+          <div className="selectContainer">
+            <select
+              id="artist"
+              name="artist"
+              value={formData.artist}
+              onChange={handleChange}
+              required>
+              <option value="" disabled>
+                ARTIST
+              </option>
+              <option value="Jimbo">Jimbo</option>
+              <option value="Carlie">Carlie</option>
+              <option value="Not Sure">Not Sure</option>
+            </select>
+
+            {errors.artist && <p className="error selectError">{errors.artist}</p>}
+          </div>
 
           <div
             className="submitButtonContainer"

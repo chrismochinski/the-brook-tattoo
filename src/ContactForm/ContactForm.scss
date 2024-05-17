@@ -6,11 +6,12 @@
     position: relative;
     width: clamp(314px, 90vw, 430px);
     margin-inline: auto;
-    backdrop-filter: blur(8px);
-    background-color: $trueBlack;
+    backdrop-filter: blur(9px);
+    background-color: #00000082;
     padding: 1.5em 0 2.5em;
     border-radius: 0.57em;
     border: 2px solid #ffffff40;
+
     .contactForm {
       align-items: flex-start;
       width: min(83%, 300px);
@@ -24,13 +25,21 @@
         align-self: flex-start;
         text-align: left;
         text-transform: uppercase;
+        display: inline;
         &.conceptLabel {
           margin-top: 0.5em;
         }
       }
+      label {
+        margin-top: 0.1em;
+      }
       .subLabel {
+        display: none;
         font-size: 0.55em;
         font-weight: 300;
+        &.show {
+          display: inline-block;
+        }
       }
 
       input,
@@ -42,7 +51,7 @@
         font-weight: 300;
         color: $white;
         letter-spacing: 0.03em;
-        margin: 0.4em 0 0.6em;
+        margin: 0.4em 0 0.2em;
         padding: 0 0.2em 0.1em;
 
         &:focus {
@@ -58,8 +67,9 @@
           background-color: transparent;
           border: none;
           border-bottom: 1px solid $white;
-          transition: border-bottom 120ms ease;
+          transition: border-bottom 350ms ease;
           &:focus {
+            transition: border-bottom 150ms ease;
             border-bottom: 1px solid $firebrick;
           }
         }
@@ -72,28 +82,35 @@
         border: 1px solid #ffffff60;
         resize: none;
         padding: 0.17em 0.37em;
-
+        transition: border 350ms ease;
         &:focus {
+          transition: border 150ms ease;
           outline: none;
           border: 1px solid $firebrick;
         }
       }
 
-      select {
-        cursor: pointer;
+      .selectContainer {
+        margin: 5em 0;
         width: 122px;
-        font-family: $poppins;
-        font-size: clamp(17px, 6cqi, 20px);
-        font-weight: 300;
-        color: $white;
-        letter-spacing: 0.03em;
-        margin: 4em 0;
-        padding: 0 0.2em 0.05em;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid $white;
-        &:focus {
-          outline: none;
+        display: flex;
+        gap: 0.35em;
+        align-items: flex-end;
+        select {
+          cursor: pointer;
+          font-family: $poppins;
+          font-size: clamp(17px, 6cqi, 20px);
+          font-weight: 300;
+          color: $white;
+          letter-spacing: 0.03em;
+          margin: 0;
+          padding: 0 0.2em 0.05em 0;
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid $white;
+          &:focus {
+            outline: none;
+          }
         }
       }
 
@@ -139,11 +156,11 @@
         }
 
         .artistImageWrapper {
-          width: 152px;
+          width: 163px;
           position: absolute;
           aspect-ratio: 2/3;
-          bottom: 22px;
-          right: 26px;
+          bottom: 15px;
+          right: 25px;
           display: none;
           .artistImage {
             border-radius: 0.3em;
@@ -156,12 +173,140 @@
           }
         }
       }
+
+
+      .error {
+        display: inline;
+        color: $firebrick;
+        font-family: $poppins;
+        font-size: 13px;
+        margin-top: 0;
+        text-align: left;
+        &.selectError {
+          margin-top: 2px;
+        }
+      }
+
+
+      // IMPORTANT - ON SUCCESS MESSAGE
+      &.hide {
+        opacity: 0;
+        filter: blur(18px);
+        transition: filter 500ms ease, opacity 350ms ease 250ms;
+        pointer-events: none;
+      }
+    }
+
+    // success message
+    .successMessage {
+      position: absolute;
+      visibility: hidden;
+      margin-inline: auto;
+      text-align: center;
+      font-family: $poppins;
+      color: $white;
+      width: 100%;
+      pointer-events: none;
+
+      h2 {
+        opacity: 0;
+        transform-origin: center;
+        transform: translateY(3em);
+        filter: blur(18px);
+        font-size: clamp(26px, 12cqi, 33px);
+        font-weight: 500;
+        margin: 0.2em 0 0.1em;
+        letter-spacing: 0.16em;
+      }
+      p {
+        opacity: 0;
+        transform-origin: center;
+        transform: translateY(3em);
+        filter: blur(18px);
+        font-size: clamp(15px, 5cqi, 18px);
+        font-weight: 300;
+        margin: 0;
+      }
+
+      .backButtonContainer {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(3em);
+        filter: blur(18px);
+        z-index: 10;
+        width: 98px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-inline: auto;
+        margin-top: 0.8em;
+        cursor: pointer;
+        .backButton {
+          width: 90px;
+          height: 42px;
+          background-color: $firebrick;
+          border-radius: 14px;
+          border: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 400ms ease;
+          h4 {
+            transition: all 400ms ease;
+            text-transform: uppercase;
+            font-family: $poppins;
+            font-weight: 600;
+            font-size: clamp(15px, 4cqi, 17px);
+            color: $white;
+          }
+        }
+
+        &:hover {
+          transition: all 220ms ease;
+          .backButton {
+            transition: all 220ms ease;
+            background-color: $blood;
+            width: 95px;
+            height: 40px;
+            h4 {
+              transition: all 220ms ease;
+              transform: scale(1.125);
+            }
+          }
+        }
+      }
+
+      &.show {
+        visibility: visible;
+        p,
+        h2 {
+          opacity: 1;
+          filter: blur(0);
+          transform: translateY(0);
+        }
+        h2 {
+          transition: filter 750ms ease 150ms, opacity 400ms ease 250ms, transform 500ms ease 150ms;
+        }
+        p {
+          transition: filter 750ms ease 350ms, opacity 400ms ease 450ms, transform 500ms ease 350ms;
+        }
+        .backButtonContainer {
+          pointer-events: auto;
+          opacity: 1;
+          filter: blur(0);
+          visibility: visible;
+          transform: translateY(0);
+          transition: filter 800ms ease 500ms, opacity 500ms ease 600ms, transform 600ms ease 500ms;
+        }
+      }
     }
   }
 }
 
 @media (max-width: 575px) {
-    .contactFormContainer {
-        padding-inline: 0 !important;
-    }
+  .contactFormContainer {
+    padding-inline: 0 !important;
+  }
 }
