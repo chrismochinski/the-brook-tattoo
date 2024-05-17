@@ -91,7 +91,7 @@
       }
 
       .selectContainer {
-        margin: 4.5em 0;
+        margin: 5em 0;
         width: 122px;
         display: flex;
         gap: 0.35em;
@@ -156,11 +156,11 @@
         }
 
         .artistImageWrapper {
-          width: 164px;
+          width: 163px;
           position: absolute;
           aspect-ratio: 2/3;
-          bottom: 16px;
-          right: 28px;
+          bottom: 15px;
+          right: 25px;
           display: none;
           .artistImage {
             border-radius: 0.3em;
