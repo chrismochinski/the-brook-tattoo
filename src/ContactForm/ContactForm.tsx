@@ -19,12 +19,16 @@ export function ContactForm() {
     concept: "",
     artist: "",
   });
+  const [characterCount, setCharacterCount] = useState<number>(500);
+  const [formSuccess, setFormSuccess] = useState<boolean>(false);
 
   // changing fields
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+    if (name === "concept") setCharacterCount(500 - value.length); // update remaining concept characters
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -47,6 +51,7 @@ export function ContactForm() {
       const result = await response.json();
       if (response.ok) {
         console.log("Success:", result);
+        setFormSuccess(true);
         // Handle success (e.g., showing a success message)
       } else {
         throw new Error(result.error || "Failed to send email");
@@ -70,8 +75,12 @@ export function ContactForm() {
   return (
     <div className="section contactFormContainer mt-2">
       <div className="formWidthSetter">
+        <div className={`successMessage ${formSuccess && "show"}`}>
+          <h2>Success!</h2>
+          <p>We'll be in touch soon.</p>
+        </div>
         <form
-          className="column contactForm"
+          className={`column contactForm ${formSuccess && "hide"}`}
           name="contact"
           method="POST"
           data-netlify="true"
@@ -113,7 +122,8 @@ export function ContactForm() {
           />
 
           <label className="conceptLabel" htmlFor="concept">
-            Concept <span className="subLabel">(500 char)</span>
+            Concept{" "}
+            <span className={`subLabel ${characterCount < 500 && "show"}`}>({characterCount})</span>
           </label>
           <textarea
             id="concept"
