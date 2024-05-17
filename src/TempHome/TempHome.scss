@@ -1,0 +1,10 @@
+@import "../Globals/GlobalStyles.scss";
+
+.tempHome {
+  @extend .lineNormal;
+  h1,
+  h2 {
+    color: #fff;
+    text-wrap: balance;
+  }
+}

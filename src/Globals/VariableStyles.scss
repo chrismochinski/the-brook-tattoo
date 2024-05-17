@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "LogoType";
+  src: url("../fonts/TypewriterSpoolXRXEx-Italic.otf");
+}
+
+@font-face {
+  font-family: "LogoTypeAlt";
+  src: url("../fonts/TravelingTypewriter.ttf");
+}
+
+// global fonts based on above imports
+$logoType: "LogoType", Arial, sans-serif;
+$logoTypeAlt: "LogoTypeAlt", Arial, sans-serif;
+
+// global colors
+$trueBlack: #000000;
+$black: #191716;
+$blood: #66101f;
+$gunz: #323031;
+$sword: #9f9f9f;
+$white: #ffffff;

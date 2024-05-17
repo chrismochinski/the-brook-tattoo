@@ -1,0 +1,164 @@
+@import "./VariableStyles.scss";
+
+// global all
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// global containers and layout
+.section {
+  width: 100vw;
+  height: fit-content;
+  margin-top: max(calc(1.5vw + 1.5vw), 2em);
+  margin-bottom: max(calc(1.5vw + 1.5vw), 2em);
+  padding-left: max(6vw, (100vw - 1280px)/2);
+  padding-right: max(6vw, (100vw - 1280px)/2);
+}
+
+.container {
+  container-type: inline-size;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// global TEXT
+
+.theBrookLogo {
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  color: #fff;
+  text-wrap: balance;
+  font-weight: 300;
+  margin-block: 0;
+  font-family: $logoType;
+}
+
+.tattooStudioLogo {
+  font-family: $logoTypeAlt;
+  letter-spacing: 0.16em;
+  margin-top: 0.5em;
+  font-weight: 600;
+  color: #fff;
+  text-wrap: balance;
+  font-weight: 300;
+  font-size: 1.75rem;
+}
+
+.logoType {
+  font-family: $logoType;
+}
+
+.logoTypeAlt {
+  font-family: $logoTypeAlt;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.leftText {
+  text-align: left;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.rightText {
+  text-align: right;
+}
+
+.textRight {
+  text-align: right;
+}
+
+// logo text top line
+.overline {
+  line-height: 0.5em;
+  margin-top: -0.5em;
+}
+
+.lineNormal {
+  line-height: normal;
+}
+
+.lineTight {
+  line-height: 1.25em;
+}
+
+.lineLoose {
+  line-height: 1.5em;
+}
+
+div.logoText {
+  text-align: center;
+  height: 1.65em;
+  font-family: $logoTypeAlt;
+  font-size: 6rem;
+  color: #fff;
+  text-wrap: balance;
+  font-weight: 300;
+  h1 {
+    line-height: 1em;
+    text-transform: uppercase;
+    margin-top: -0.2em;
+
+    &:first-of-type {
+      font-size: 1em;
+      font-family: $logoType;
+      transform: scaleY(0.5) translateX(-0.04em);
+      line-height: 0.635em;
+    }
+    &:nth-of-type(2) {
+      font-size: 1em;
+      letter-spacing: 0.07em;
+    }
+    &:last-of-type {
+      font-size: 1em;
+      margin-top: -0.715em;
+      font-family: $logoType;
+      transform: scaleY(0.45) translateX(-0.04em);
+    }
+  }
+  &:first-of-type {
+    margin-bottom: -0.625em;
+  }
+  &:last-of-type {
+    margin-top: -0.5em;
+    margin-bottom: -0.15em;
+  }
+}
+
+.subLogoText {
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  font-family: $logoTypeAlt;
+  color: #fff;
+  letter-spacing: 0.25em;
+  text-wrap: balance;
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1em;
+  
+}
