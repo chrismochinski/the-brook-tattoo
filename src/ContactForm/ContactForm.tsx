@@ -154,7 +154,9 @@ export function ContactForm() {
             onChange={handleChange}
           />
 
-          <label htmlFor="email">Email {errors.email && <p className="error">{errors.email}</p>}</label>
+          <label htmlFor="email">
+            Email {errors.email && <p className="error">{errors.email}</p>}
+          </label>
           <input
             id="email"
             type="email"
@@ -163,9 +165,10 @@ export function ContactForm() {
             required
             onChange={handleChange}
           />
-         
 
-          <label htmlFor="phone">Phone {errors.phone && <p className="error">{errors.phone}</p>}</label>
+          <label htmlFor="phone">
+            Phone {errors.phone && <p className="error">{errors.phone}</p>}
+          </label>
           <input
             id="phone"
             type="tel"
@@ -173,7 +176,6 @@ export function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
           />
-          
 
           <label className="conceptLabel" htmlFor="concept">
             Concept{" "}
@@ -188,24 +190,44 @@ export function ContactForm() {
             required
             onChange={handleChange}></textarea>
 
-         
-
-          <div className="selectContainer">
-            <select
-              id="artist"
-              name="artist"
-              value={formData.artist}
-              onChange={handleChange}
-              required>
-              <option value="" disabled>
-                ARTIST
-              </option>
-              <option value="Jimbo">Jimbo</option>
-              <option value="Carlie">Carlie</option>
-              <option value="Not Sure">Not Sure</option>
-            </select>
-
-            {errors.artist && <p className="error selectError">{errors.artist}</p>}
+          <div className="radioContainer">
+            <label className="artistLabel" htmlFor="artist">
+              Artist{" "}
+              <span className={`subLabel ${characterCount < 500 && "show"}`}>
+                ({characterCount})
+              </span>
+              {errors.concept && <p className="error">{errors.artist}</p>}
+            </label>
+            <div className="radioWrapper">
+              <input type="radio" id="Jimbo" name="artist" value="Jimbo" onChange={handleChange} />
+              <label className="radioLabel" htmlFor="Jimbo">
+                Jimbo
+              </label>
+            </div>
+            <div className="radioWrapper">
+              <input
+                type="radio"
+                id="Carlie"
+                name="artist"
+                value="Carlie"
+                onChange={handleChange}
+              />
+              <label className="radioLabel" htmlFor="Carlie">
+                Carlie
+              </label>
+            </div>
+            <div className="radioWrapper">
+              <input
+                type="radio"
+                id="Not Sure"
+                name="artist"
+                value="Not Sure"
+                onChange={handleChange}
+              />
+              <label className="radioLabel" htmlFor="Not Sure">
+                Not Sure
+              </label>
+            </div>
           </div>
 
           <div
@@ -221,26 +243,25 @@ export function ContactForm() {
             <div className="submitButton">
               <h4>Send</h4>
             </div>
-
-            <div
-              className={`artistImageWrapper  ${
-                formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
-              }`}>
-              {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
-              <img
-                className="artistImage"
-                src={
-                  formData.artist === "Jimbo"
-                    ? JimboMain
-                    : formData.artist === "Carlie"
-                    ? CarlieMain
-                    : ""
-                }
-                alt={formData.artist}
-              />
-            </div>
           </div>
         </form>
+          <div
+            className={`artistImageWrapper  ${
+              formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
+            }`}>
+            {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
+            <img
+              className={`artistImage`}
+              src={
+                formData.artist === "Jimbo"
+                  ? JimboMain
+                  : formData.artist === "Carlie"
+                  ? CarlieMain
+                  : ""
+              }
+              alt={formData.artist}
+            />
+          </div>
       </div>
     </div>
   );
