@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ContactForm.scss";
 import JimboMain from "../../src/Images/jimbo-masked.png";
 import CarlieMain from "../../src/Images/carlie-masked.png";
@@ -29,15 +29,20 @@ export function ContactForm() {
   const [characterCount, setCharacterCount] = useState<number>(500);
   const [formSuccess, setFormSuccess] = useState<boolean>(false);
 
+  useEffect(() => {
+    // Clear the artist field on initial load
+    setFormData((prevData) => ({ ...prevData, artist: "" }));
+  }, []);
+
   const validateField = (name: string, value: string): string => {
     switch (name) {
       case "name":
         return value.trim() === "" ? "Required" : "";
       case "email":
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid";
-        case "phone":
-          return /^\d{10}$/.test(value.replace(/[^0-9]/g, "")) ? "" : "Invalid";
-          case "concept":
+      case "phone":
+        return /^\d{10}$/.test(value.replace(/[^0-9]/g, "")) ? "" : "Invalid";
+      case "concept":
         return value.trim() === "" ? "Required" : "";
       case "artist":
         return value === "" ? "Required" : "";
@@ -82,10 +87,10 @@ export function ContactForm() {
     };
     setErrors(newErrors);
 
-       // Check if there are any errors
-       if (Object.values(newErrors).some((error) => error !== "")) {
-        return; // Exit if there are validation errors
-      }
+    // Check if there are any errors
+    if (Object.values(newErrors).some((error) => error !== "")) {
+      return; // Exit if there are validation errors
+    }
 
     try {
       const response = await fetch("/.netlify/functions/sendEmail", {
@@ -127,8 +132,8 @@ export function ContactForm() {
   };
 
   const handleGoBack = () => {
-    setFormSuccess(false);
     clearFormData();
+    setFormSuccess(false);
   };
 
   return (
@@ -207,7 +212,14 @@ export function ContactForm() {
               Artist {errors.artist && <p className="error">{errors.artist}</p>}
             </label>
             <div className="radioWrapper">
-              <input type="radio" id="Jimbo" name="artist" value="Jimbo" onChange={handleChange} />
+              <input
+                type="radio"
+                id="Jimbo"
+                name="artist"
+                value="Jimbo"
+                checked={formData.artist === "Jimbo"}
+                onChange={handleChange}
+              />
               <label className="radioLabel" htmlFor="Jimbo">
                 Jimbo
               </label>
@@ -218,6 +230,7 @@ export function ContactForm() {
                 id="Carlie"
                 name="artist"
                 value="Carlie"
+                checked={formData.artist === "Carlie"}
                 onChange={handleChange}
               />
               <label className="radioLabel" htmlFor="Carlie">
@@ -230,6 +243,7 @@ export function ContactForm() {
                 id="Not Sure"
                 name="artist"
                 value="Not Sure"
+                checked={formData.artist === "Not Sure"}
                 onChange={handleChange}
               />
               <label className="radioLabel" htmlFor="Not Sure">
