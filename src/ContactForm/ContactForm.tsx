@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./ContactForm.scss";
 import JimboMain from "../../src/Images/jimbo-masked.png";
 import CarlieMain from "../../src/Images/carlie-masked.png";
@@ -29,6 +29,11 @@ export function ContactForm() {
   const [characterCount, setCharacterCount] = useState<number>(500);
   const [formSuccess, setFormSuccess] = useState<boolean>(false);
 
+  useEffect(() => {
+    // Clear the artist field on initial load
+    setFormData((prevData) => ({ ...prevData, artist: "" }));
+  }, []);
+
   const validateField = (name: string, value: string): string => {
     switch (name) {
       case "name":
@@ -36,14 +41,21 @@ export function ContactForm() {
       case "email":
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid";
       case "phone":
-        return /^\d{10}$/.test(value) ? "" : "Required";
+        return /^\d{10}$/.test(value.replace(/[^0-9]/g, "")) ? "" : "Invalid";
       case "concept":
         return value.trim() === "" ? "Required" : "";
       case "artist":
-        return value === "" ? "REQUIRED" : "";
+        return value === "" ? "Required" : "";
       default:
         return "";
     }
+  };
+
+  const formatPhoneNumber = (phone: string): string => {
+    if (phone.length === 10) {
+      return phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+    }
+    return phone;
   };
 
   // changing fields
@@ -51,9 +63,15 @@ export function ContactForm() {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-    if (name === "concept") setCharacterCount(500 - value.length); // update remaining concept characters
-    setErrors({ ...errors, [name]: validateField(name, value) });
+    if (name === "phone") {
+      const formattedPhone = formatPhoneNumber(value.replace(/[^0-9]/g, ""));
+      setFormData({ ...formData, phone: formattedPhone });
+      setErrors({ ...errors, phone: validateField(name, formattedPhone) });
+    } else {
+      setFormData({ ...formData, [name]: value });
+      if (name === "concept") setCharacterCount(500 - value.length); // update remaining concept characters
+      setErrors({ ...errors, [name]: validateField(name, value) });
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -64,7 +82,7 @@ export function ContactForm() {
       name: validateField("name", formData.name),
       email: validateField("email", formData.email),
       phone: validateField("phone", formData.phone),
-      concept: validateField("concept", formData.concept),
+      concept: "", // concept field not required
       artist: validateField("artist", formData.artist),
     };
     setErrors(newErrors);
@@ -114,8 +132,8 @@ export function ContactForm() {
   };
 
   const handleGoBack = () => {
-    setFormSuccess(false);
     clearFormData();
+    setFormSuccess(false);
   };
 
   return (
@@ -127,7 +145,7 @@ export function ContactForm() {
 
           <div className="backButtonContainer" tabIndex={0} role="button" onClick={handleGoBack}>
             <div className="backButton">
-              <h4>Go Back</h4>
+              <h4>Back</h4>
             </div>
           </div>
         </div>
@@ -154,7 +172,9 @@ export function ContactForm() {
             onChange={handleChange}
           />
 
-          <label htmlFor="email">Email {errors.email && <p className="error">{errors.email}</p>}</label>
+          <label htmlFor="email">
+            Email {errors.email && <p className="error">{errors.email}</p>}
+          </label>
           <input
             id="email"
             type="email"
@@ -163,9 +183,10 @@ export function ContactForm() {
             required
             onChange={handleChange}
           />
-         
 
-          <label htmlFor="phone">Phone {errors.phone && <p className="error">{errors.phone}</p>}</label>
+          <label htmlFor="phone">
+            Phone {errors.phone && <p className="error">{errors.phone}</p>}
+          </label>
           <input
             id="phone"
             type="tel"
@@ -173,12 +194,10 @@ export function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
           />
-          
 
           <label className="conceptLabel" htmlFor="concept">
             Concept{" "}
             <span className={`subLabel ${characterCount < 500 && "show"}`}>({characterCount})</span>
-            {errors.concept && <p className="error">{errors.concept}</p>}
           </label>
           <textarea
             id="concept"
@@ -188,24 +207,49 @@ export function ContactForm() {
             required
             onChange={handleChange}></textarea>
 
-         
-
-          <div className="selectContainer">
-            <select
-              id="artist"
-              name="artist"
-              value={formData.artist}
-              onChange={handleChange}
-              required>
-              <option value="" disabled>
-                ARTIST
-              </option>
-              <option value="Jimbo">Jimbo</option>
-              <option value="Carlie">Carlie</option>
-              <option value="Not Sure">Not Sure</option>
-            </select>
-
-            {errors.artist && <p className="error selectError">{errors.artist}</p>}
+          <div className="radioContainer">
+            <label className="artistLabel" htmlFor="artist">
+              Artist {errors.artist && <p className="error">{errors.artist}</p>}
+            </label>
+            <div className="radioWrapper">
+              <input
+                type="radio"
+                id="Jimbo"
+                name="artist"
+                value="Jimbo"
+                checked={formData.artist === "Jimbo"}
+                onChange={handleChange}
+              />
+              <label className="radioLabel" htmlFor="Jimbo">
+                Jimbo
+              </label>
+            </div>
+            <div className="radioWrapper">
+              <input
+                type="radio"
+                id="Carlie"
+                name="artist"
+                value="Carlie"
+                checked={formData.artist === "Carlie"}
+                onChange={handleChange}
+              />
+              <label className="radioLabel" htmlFor="Carlie">
+                Carlie
+              </label>
+            </div>
+            <div className="radioWrapper">
+              <input
+                type="radio"
+                id="Not Sure"
+                name="artist"
+                value="Not Sure"
+                checked={formData.artist === "Not Sure"}
+                onChange={handleChange}
+              />
+              <label className="radioLabel" htmlFor="Not Sure">
+                Not Sure
+              </label>
+            </div>
           </div>
 
           <div
@@ -221,26 +265,25 @@ export function ContactForm() {
             <div className="submitButton">
               <h4>Send</h4>
             </div>
-
-            <div
-              className={`artistImageWrapper  ${
-                formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
-              }`}>
-              {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
-              <img
-                className="artistImage"
-                src={
-                  formData.artist === "Jimbo"
-                    ? JimboMain
-                    : formData.artist === "Carlie"
-                    ? CarlieMain
-                    : ""
-                }
-                alt={formData.artist}
-              />
-            </div>
           </div>
         </form>
+        <div
+          className={`artistImageWrapper  ${
+            formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
+          }`}>
+          {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
+          <img
+            className={`artistImage`}
+            src={
+              formData.artist === "Jimbo"
+                ? JimboMain
+                : formData.artist === "Carlie"
+                ? CarlieMain
+                : ""
+            }
+            alt={formData.artist}
+          />
+        </div>
       </div>
     </div>
   );

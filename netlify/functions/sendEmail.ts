@@ -1,8 +1,8 @@
-import sgMail from '@sendgrid/mail';
+import sgMail from "@sendgrid/mail";
 
 const apiKey = process.env.SENDGRID_API_KEY;
 if (!apiKey) {
-  throw new Error('SENDGRID_API_KEY is not defined');
+  throw new Error("SENDGRID_API_KEY is not defined");
 }
 sgMail.setApiKey(apiKey);
 
@@ -11,7 +11,7 @@ exports.handler = async (event: any) => {
     return {
       statusCode: 405,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: "Method Not Allowed" })
+      body: JSON.stringify({ message: "Method Not Allowed" }),
     };
   }
 
@@ -21,10 +21,13 @@ exports.handler = async (event: any) => {
 
   const msg = {
     to: recipientEmail,
-    from: 'mo@chrismochinski.com', // This should be a verified sender in SendGrid
+    from: {
+      email: "workflow@wreckshopmedia.com",
+      name: "Wreck Shop - Workflow",
+    },
     subject: subject,
-    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nConcept: ${concept}`,
-    html: `<strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone}<br><strong>Concept:</strong> ${concept}`,
+    text: `Hi ${artist}!\n\nYou have received a form submission!\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nConcept: ${concept}`,
+    html: `<p>Hi ${artist}!</p><p>You have received a form submission!</p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone}<br><strong>Concept:</strong> ${concept}`,
   };
 
   console.log("Sending email to:", recipientEmail);
@@ -35,14 +38,14 @@ exports.handler = async (event: any) => {
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: `Email sent successfully to ${recipientEmail}!` })
+      body: JSON.stringify({ message: `Email sent successfully to ${recipientEmail}!` }),
     };
   } catch (error) {
     console.error(error);
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: "Failed to send email" })
+      body: JSON.stringify({ message: "Failed to send email" }),
     };
   }
 };
