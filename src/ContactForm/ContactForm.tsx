@@ -35,15 +35,22 @@ export function ContactForm() {
         return value.trim() === "" ? "Required" : "";
       case "email":
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid";
-      case "phone":
-        return /^\d{10}$/.test(value) ? "" : "Required";
-      case "concept":
+        case "phone":
+          return /^\d{10}$/.test(value.replace(/[^0-9]/g, "")) ? "" : "Invalid";
+          case "concept":
         return value.trim() === "" ? "Required" : "";
       case "artist":
-        return value === "" ? "REQUIRED" : "";
+        return value === "" ? "Required" : "";
       default:
         return "";
     }
+  };
+
+  const formatPhoneNumber = (phone: string): string => {
+    if (phone.length === 10) {
+      return phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+    }
+    return phone;
   };
 
   // changing fields
@@ -51,9 +58,15 @@ export function ContactForm() {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-    if (name === "concept") setCharacterCount(500 - value.length); // update remaining concept characters
-    setErrors({ ...errors, [name]: validateField(name, value) });
+    if (name === "phone") {
+      const formattedPhone = formatPhoneNumber(value.replace(/[^0-9]/g, ""));
+      setFormData({ ...formData, phone: formattedPhone });
+      setErrors({ ...errors, phone: validateField(name, formattedPhone) });
+    } else {
+      setFormData({ ...formData, [name]: value });
+      if (name === "concept") setCharacterCount(500 - value.length); // update remaining concept characters
+      setErrors({ ...errors, [name]: validateField(name, value) });
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -64,15 +77,15 @@ export function ContactForm() {
       name: validateField("name", formData.name),
       email: validateField("email", formData.email),
       phone: validateField("phone", formData.phone),
-      concept: validateField("concept", formData.concept),
+      concept: "", // concept field not required
       artist: validateField("artist", formData.artist),
     };
     setErrors(newErrors);
 
-    // Check if there are any errors
-    if (Object.values(newErrors).some((error) => error !== "")) {
-      return; // Exit if there are validation errors
-    }
+       // Check if there are any errors
+       if (Object.values(newErrors).some((error) => error !== "")) {
+        return; // Exit if there are validation errors
+      }
 
     try {
       const response = await fetch("/.netlify/functions/sendEmail", {
@@ -127,7 +140,7 @@ export function ContactForm() {
 
           <div className="backButtonContainer" tabIndex={0} role="button" onClick={handleGoBack}>
             <div className="backButton">
-              <h4>Go Back</h4>
+              <h4>Back</h4>
             </div>
           </div>
         </div>
@@ -180,7 +193,6 @@ export function ContactForm() {
           <label className="conceptLabel" htmlFor="concept">
             Concept{" "}
             <span className={`subLabel ${characterCount < 500 && "show"}`}>({characterCount})</span>
-            {errors.concept && <p className="error">{errors.concept}</p>}
           </label>
           <textarea
             id="concept"
@@ -192,11 +204,7 @@ export function ContactForm() {
 
           <div className="radioContainer">
             <label className="artistLabel" htmlFor="artist">
-              Artist{" "}
-              <span className={`subLabel ${characterCount < 500 && "show"}`}>
-                ({characterCount})
-              </span>
-              {errors.concept && <p className="error">{errors.artist}</p>}
+              Artist {errors.artist && <p className="error">{errors.artist}</p>}
             </label>
             <div className="radioWrapper">
               <input type="radio" id="Jimbo" name="artist" value="Jimbo" onChange={handleChange} />
@@ -245,23 +253,23 @@ export function ContactForm() {
             </div>
           </div>
         </form>
-          <div
-            className={`artistImageWrapper  ${
-              formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
-            }`}>
-            {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
-            <img
-              className={`artistImage`}
-              src={
-                formData.artist === "Jimbo"
-                  ? JimboMain
-                  : formData.artist === "Carlie"
-                  ? CarlieMain
-                  : ""
-              }
-              alt={formData.artist}
-            />
-          </div>
+        <div
+          className={`artistImageWrapper  ${
+            formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
+          }`}>
+          {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
+          <img
+            className={`artistImage`}
+            src={
+              formData.artist === "Jimbo"
+                ? JimboMain
+                : formData.artist === "Carlie"
+                ? CarlieMain
+                : ""
+            }
+            alt={formData.artist}
+          />
+        </div>
       </div>
     </div>
   );
