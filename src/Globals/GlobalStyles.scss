@@ -37,6 +37,16 @@
 
 // global TEXT
 
+p {
+  font-family: $poppins;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 300;
+  color: $white;
+  letter-spacing: 0.025em;
+  margin-block: 1em;
+  line-height: 1.35em;
+}
+
 .theBrookLogo {
   font-size: clamp(3.5rem, 8vw, 5.5rem);
   color: #fff;
