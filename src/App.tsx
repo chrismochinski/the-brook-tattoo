@@ -7,6 +7,10 @@ function App() {
     <div className="App">
       <div className="tempHomeContainer">
         <TempHeader />
+        <p className="underConstructionText">
+          Our new site is <strong>under construction</strong>. For the time being, please get in touch with us via
+          the form below.
+        </p>
         <ContactForm />
       </div>
     </div>

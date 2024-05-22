@@ -19,7 +19,7 @@
       margin-inline: auto;
       label,
       .subLabel {
-        font-size: clamp(18px, 5cqi, 22px);
+        font-size: clamp(18px, 5.5cqi, 23px);
         font-family: $poppins;
         font-weight: 500;
         color: $sword;
@@ -53,8 +53,6 @@
         color: $white;
         letter-spacing: 0.03em;
         margin: 0.4em 0 0.2em;
-        padding: 0 0.2em 0.1em;
-
         &:focus {
           outline: none;
         }
@@ -66,9 +64,12 @@
         &[type="tel"],
         &[type="number"] {
           background-color: transparent;
-          border: none;
+          border-top: none;
+          border-inline: none;
           border-bottom: 1px solid $sword;
           transition: border-bottom 350ms ease;
+          border-radius: 0;
+          box-shadow: none;
           &:focus {
             transition: border-bottom 150ms ease;
             border-bottom: 1px solid $white;
@@ -88,8 +89,8 @@
         &:focus {
           transition: border 170ms ease, box-shadow 170ms ease;
           outline: none;
-          // border: 1px solid $white; 
-          box-shadow: 0 0 16px 1px #ff3a3abb;
+          border: 1px solid $white; 
+          box-shadow: 0 0 11px 1px #ff3a3a60;
         }
       }
 
@@ -107,31 +108,36 @@
           input {
             display: none;
             &:hover + label:before {
-              box-shadow: 0 0 27px 4px #ff3a3a;
-              transition: box-shadow 200ms ease, background-color 200ms ease;
+              box-shadow: -3px 0 16px 2px #ff3a3a78;
+              transition: box-shadow 165ms ease, background-color 165ms ease;
               background-color: $firebrick;
             }
+            &:hover + label, &:focus + label {
+              filter: drop-shadow(0 0 9px #ff3a3a) drop-shadow(9px 0 8px #ff3a3a60);
+              transition: filter 165ms ease, background-color 165ms ease;
+            }
             & + label:before {
-              box-shadow: 0 0 15px #ff3a3a;
+              box-shadow: 0 0 7px #ff3a3a;
             }
             &:checked {
               // CHECKED STATE
               & + .radioLabel {
-                font-weight: 600;
-                letter-spacing: 0.032em;
+                font-weight: 500;
+                letter-spacing: 0.044em;
                 &:before {
                   background-color: $white;
-                  box-shadow: 0 0 30px 10px #ff3a3a;
+                  box-shadow: 0 0 22px 7px #ff3a3aAA;
                 }
               }
             }
           }
           .radioLabel {
+            transition: filter 500ms ease, background-color 500ms ease;
             letter-spacing: 0.06em;
             font-weight: 400;
             cursor: pointer;
             position: relative;
-            font-size: 17px;
+            font-size: clamp(17px, 4.3cqi, 19px);
             color: $white;
             padding-left: 27px;
             &:before {

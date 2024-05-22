@@ -53,12 +53,12 @@ exports.handler = async (event: any) => {
 function determineRecipient(artist: string): string {
   switch (artist) {
     case "Jimbo":
-      return "cmochinski@gmail.com";
+      return "jamesermilio01@gmail.com";
     case "Carlie":
-      return "mo@readygoes.com";
+      return "tattoos.by.cr@gmail.com";
     case "Not Sure":
-      return "cmochinski@gmail.com, mo@readygoes.com";
+      return "jamesermilio01@gmail.com";
     default:
-      return "mo@chrismochinski.com";
+      return "jamesermilio01@gmail.com";
   }
 }

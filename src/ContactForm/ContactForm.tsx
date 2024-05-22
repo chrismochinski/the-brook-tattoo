@@ -66,11 +66,11 @@ export function ContactForm() {
     if (name === "phone") {
       const formattedPhone = formatPhoneNumber(value.replace(/[^0-9]/g, ""));
       setFormData({ ...formData, phone: formattedPhone });
-      setErrors({ ...errors, phone: validateField(name, formattedPhone) });
+      // setErrors({ ...errors, phone: validateField(name, formattedPhone) }); //deletelater???
     } else {
       setFormData({ ...formData, [name]: value });
-      if (name === "concept") setCharacterCount(500 - value.length); // update remaining concept characters
-      setErrors({ ...errors, [name]: validateField(name, value) });
+      if (name === "concept") setCharacterCount(500 - value.length);
+      // setErrors({ ...errors, [name]: validateField(name, value) }); //deletelater???
     }
   };
 
@@ -137,7 +137,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="section contactFormContainer mt-2">
+    <div className="section contactFormContainer mt-0">
       <div className="formWidthSetter">
         <div className={`successMessage ${formSuccess && "show"}`}>
           <h2>Success!</h2>
