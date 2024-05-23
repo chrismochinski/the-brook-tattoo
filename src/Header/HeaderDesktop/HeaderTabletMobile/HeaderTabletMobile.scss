@@ -1,0 +1,58 @@
+@import "../../../Globals/GlobalStyles.scss";
+
+.headerTabletMobile {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 min(4vw, 50px);
+  .headerLogoTabletMobile {
+    transition: opacity 375ms ease, transform 600ms ease;
+    opacity: 1;
+    transform: translateX(0);
+    width: 100px;
+  }
+  .hamburger {
+    transition: opacity 375ms ease, transform 600ms ease;
+    opacity: 1;
+    transform: translateX(0);
+    position: fixed;
+    top: 0;
+    right: 0;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 40px;
+    padding: 1.125rem;
+    background: transparent;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    top: 60px;
+    right: 0;
+    left: 0;
+    padding: 10px;
+    background: $trueBlack;
+    box-shadow: -4px 4px 10px #00000060;
+    &.open {
+      display: flex;
+    }
+  }
+}
+
+@media (min-width: 850px) {
+  .headerTabletMobile {
+    .headerLogoTabletMobile {
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: opacity 0ms, transform 0ms;
+    }
+    .hamburger {
+      opacity: 0;
+      transform: translateX(100px);
+      transition: opacity 0ms, transform 0ms;
+    }
+  }
+}

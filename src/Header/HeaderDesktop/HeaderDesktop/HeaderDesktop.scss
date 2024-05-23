@@ -1,0 +1,78 @@
+@import "../../../Globals/GlobalStyles.scss";
+
+.headerDesktop {
+ height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  .headerLogoDesktop {
+    width: 160px;
+  }
+  .nav {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    .desktopLink {
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: normal;
+      color: $sword;
+      font-family: $zaiRoyalType;
+      line-height: 1.35em;
+      transition: color 400ms ease-out;
+      &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        border-radius: 3px;
+        margin-bottom: 0.07em;
+        height: 2px;
+        background: $firebrick;
+        transform: scaleX(0);
+        opacity: 0;
+        transition: transform 400ms ease-out, opacity 300ms ease-out 100ms;
+        transform-origin: left;
+      }
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        border-radius: 3px;
+        height: 2px;
+        background: $firebrick;
+        transform: scaleX(0);
+        opacity: 0;
+        transition: transform 400ms ease-out, opacity 300ms ease-out 100ms;
+        transform-origin: right;
+      }
+      &:hover {
+        color: $white;
+        transition: color 200ms ease-out;
+      
+      }
+      &:hover::before {
+        transform: scaleX(1);
+        opacity: 1;
+        transition: transform 200ms ease-out, opacity 200ms ease-out;
+      }
+      &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+        transition: transform 200ms ease-out, opacity 200ms ease-out;
+      }
+    }
+  }
+}
+
+// mobile header has a mediaquery that says min-width: 992px, so this desktop header should be::after
+
+@media (max-width: 850px) {
+  .headerDesktop {
+    display: none;
+  }
+}

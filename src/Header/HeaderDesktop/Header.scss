@@ -1,0 +1,14 @@
+@import "../../Globals/GlobalStyles.scss";
+
+.header {
+  width: 100vw;
+  height: 200px;
+  transition: height 500ms ease;
+  background: linear-gradient(to bottom, #000000, #00000070);
+}
+
+@media (max-width: 850px) {
+  .header {
+    height: 100px;
+  }
+}

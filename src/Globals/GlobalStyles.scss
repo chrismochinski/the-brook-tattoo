@@ -11,8 +11,7 @@
 .section {
   width: 100vw;
   height: fit-content;
-  margin-top: max(calc(1.5vw + 1.5vw), 2em);
-  margin-bottom: max(calc(1.5vw + 1.5vw), 2em);
+  margin-block: min(2em, calc(2vh + 2vw));
   padding-left: max(6vw, (100vw - 1280px)/2);
   padding-right: max(6vw, (100vw - 1280px)/2);
 }
@@ -85,6 +84,38 @@
 
 .logoTypeAlt {
   font-family: $logoTypeAlt;
+}
+
+.albertsType {
+  font-family: $albertsType;
+}
+
+.bygonestType {
+  font-family: $bygonestType;
+}
+
+.draconianType {
+  font-family: $draconianType;
+}
+
+.leapingType {
+  font-family: $leapingType;
+}
+
+.momsType {
+  font-family: $momsType;
+}
+
+.oldType {
+  font-family: $oldType;
+}
+
+.zaiOlivettiType {
+  font-family: $zaiOlivettiType;
+}
+
+.zaiRoyalType {
+  font-family: $zaiRoyalType;
 }
 
 // global text preset styles

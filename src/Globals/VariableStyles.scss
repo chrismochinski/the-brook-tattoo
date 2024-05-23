@@ -12,13 +12,64 @@
   src: url("../../public/assets/fonts/TravelingTypewriter.ttf");
 }
 
+@font-face {
+  font-family: "AlbertsType";
+  src: url("../../public/assets/fonts/AlbertsthalTypewriter.ttf");
+}
+
+@font-face {
+  font-family: "BygonestType";
+  src: url("../../public/assets/fonts/BygonestTypewriter.ttf");
+}
+
+@font-face {
+  font-family: "DraconianType";
+  src: url("../../public/assets/fonts/DraconianTypewriter.ttf");
+}
+
+@font-face {
+  font-family: "LeapingType";
+  src: url("../../public/assets/fonts/LeapingTypewriter.ttf");
+}
+
+@font-face {
+  font-family: "MomsType";
+  src: url("../../public/assets/fonts/MomsTypewriter.ttf");
+}
+
+@font-face {
+  font-family: "OldType";
+  src: url("../../public/assets/fonts/OldTypewriter.ttf");
+}
+
+@font-face {
+  font-family: "ZaiOlivettiType";
+  src: url("../../public/assets/fonts/ZaiOlivettiUnderwoodStudio21Typewriter.otf");
+}
+
+@font-face {
+  font-family: "ZaiRoyalType";
+  src: url("../../public/assets/fonts/ZaiRoyalVogueTypewriter1929.ttf");
+}
+
 // global font selectors based on imports
 
+// Local imported
+$logoType: "LogoType", Arial, sans-serif;
+$logoTypeAlt: "LogoTypeAlt", Arial, sans-serif;
+$albertsType: "AlbertsType", Arial, sans-serif;
+$bygonestType: "BygonestType", Arial, sans-serif;
+$draconianType: "DraconianType", Arial, sans-serif;
+$leapingType: "LeapingType", Arial, sans-serif;
+$momsType: "MomsType", Arial, sans-serif;
+$oldType: "OldType", Arial, sans-serif;
+$zaiOlivettiType: "ZaiOlivettiType", Arial, sans-serif;
+$zaiRoyalType: "ZaiRoyalType", Arial, sans-serif;
+
+// Google imported
 $bitter: "Bitter", serif;
 $poppins: "Poppins", sans-serif;
 
-$logoType: "LogoType", Arial, sans-serif;
-$logoTypeAlt: "LogoTypeAlt", Arial, sans-serif;
 
 
  

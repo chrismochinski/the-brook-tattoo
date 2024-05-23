@@ -1,6 +1,7 @@
 @import "../Globals/GlobalStyles.scss";
 
 .contactFormContainer {
+  margin-top: min(2em, calc(2em + 2vw));
   .formWidthSetter {
     container-type: inline-size;
     position: relative;
@@ -89,7 +90,7 @@
         &:focus {
           transition: border 170ms ease, box-shadow 170ms ease;
           outline: none;
-          border: 1px solid $white; 
+          border: 1px solid $white;
           box-shadow: 0 0 11px 1px #ff3a3a60;
         }
       }
@@ -112,7 +113,8 @@
               transition: box-shadow 165ms ease, background-color 165ms ease;
               background-color: $firebrick;
             }
-            &:hover + label, &:focus + label {
+            &:hover + label,
+            &:focus + label {
               filter: drop-shadow(0 0 9px #ff3a3a) drop-shadow(9px 0 8px #ff3a3a60);
               transition: filter 165ms ease, background-color 165ms ease;
             }
@@ -126,7 +128,7 @@
                 letter-spacing: 0.044em;
                 &:before {
                   background-color: $white;
-                  box-shadow: 0 0 22px 7px #ff3a3aAA;
+                  box-shadow: 0 0 22px 7px #ff3a3aaa;
                 }
               }
             }

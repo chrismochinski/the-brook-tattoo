@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./ContactForm.scss";
-import { TempHeader } from "../TempHeader/TempHeader";
 import JimboMain from "../../src/Images/jimbo-masked.png";
 import CarlieMain from "../../src/Images/carlie-masked.png";
 
@@ -139,8 +138,7 @@ export function ContactForm() {
 
   return (
     <div>
-      <TempHeader />
-      <div className="section contactFormContainer mt-0">
+      <div className="section contactFormContainer">
         <div className="formWidthSetter">
           <div className={`successMessage ${formSuccess && "show"}`}>
             <h2>Success!</h2>
