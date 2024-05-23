@@ -35,7 +35,59 @@
   align-items: center;
 }
 
-// global TEXT
+// global TEXT STYLES
+// global TEXT STYLES
+// global TEXT STYLES
+
+// global text colors
+
+.white {
+  color: $white;
+}
+
+.firebrick {
+  color: $firebrick;
+}
+
+.gunz {
+  color: $gunz;
+}
+
+.sword {
+  color: $sword;
+}
+
+.black {
+  color: $black;
+}
+
+.trueBlack {
+  color: $trueBlack;
+}
+
+.blood {
+  color: $blood;
+}
+
+// global text fonts
+
+.poppins {
+  font-family: $poppins;
+}
+
+.bitter {
+  font-family: $bitter;
+}
+
+.logoType {
+  font-family: $logoType;
+}
+
+.logoTypeAlt {
+  font-family: $logoTypeAlt;
+}
+
+// global text preset styles
 
 p {
   font-family: $poppins;
@@ -121,7 +173,6 @@ p {
   line-height: 1.5em;
 }
 
-
 // global margins and spacing
 
 .mx-auto {
@@ -183,4 +234,3 @@ p {
 .mb-6 {
   margin-bottom: 3em;
 }
-

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./ContactForm.scss";
+import { TempHeader } from "../TempHeader/TempHeader";
 import JimboMain from "../../src/Images/jimbo-masked.png";
 import CarlieMain from "../../src/Images/carlie-masked.png";
 
@@ -137,152 +138,158 @@ export function ContactForm() {
   };
 
   return (
-    <div className="section contactFormContainer mt-0">
-      <div className="formWidthSetter">
-        <div className={`successMessage ${formSuccess && "show"}`}>
-          <h2>Success!</h2>
-          <p>We'll be in touch soon.</p>
+    <div>
+      <TempHeader />
+      <div className="section contactFormContainer mt-0">
+        <div className="formWidthSetter">
+          <div className={`successMessage ${formSuccess && "show"}`}>
+            <h2>Success!</h2>
+            <p>We'll be in touch soon.</p>
 
-          <div className="backButtonContainer" tabIndex={0} role="button" onClick={handleGoBack}>
-            <div className="backButton">
-              <h4>Back</h4>
+            <div className="backButtonContainer" tabIndex={0} role="button" onClick={handleGoBack}>
+              <div className="backButton">
+                <h4>Back</h4>
+              </div>
             </div>
           </div>
-        </div>
-        <form
-          className={`column contactForm ${formSuccess && "hide"}`}
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          action="/success">
-          <input
-            type="hidden"
-            name="subject"
-            data-remove-prefix
-            value={`The Brook Contact Submission from ${formData.name}`}
-          />
+          <form
+            className={`column contactForm ${formSuccess && "hide"}`}
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            action="/success">
+            <input
+              type="hidden"
+              name="subject"
+              data-remove-prefix
+              value={`The Brook Contact Submission from ${formData.name}`}
+            />
 
-          <label htmlFor="name">Name {errors.name && <p className="error">{errors.name}</p>}</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            value={formData.name}
-            required
-            onChange={handleChange}
-          />
-
-          <label htmlFor="email">
-            Email {errors.email && <p className="error">{errors.email}</p>}
-          </label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={formData.email}
-            required
-            onChange={handleChange}
-          />
-
-          <label htmlFor="phone">
-            Phone {errors.phone && <p className="error">{errors.phone}</p>}
-          </label>
-          <input
-            id="phone"
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-
-          <label className="conceptLabel" htmlFor="concept">
-            Concept{" "}
-            <span className={`subLabel ${characterCount < 500 && "show"}`}>({characterCount})</span>
-          </label>
-          <textarea
-            id="concept"
-            name="concept"
-            value={formData.concept}
-            maxLength={500}
-            required
-            onChange={handleChange}></textarea>
-
-          <div className="radioContainer">
-            <label className="artistLabel" htmlFor="artist">
-              Artist {errors.artist && <p className="error">{errors.artist}</p>}
+            <label htmlFor="name">
+              Name {errors.name && <p className="error">{errors.name}</p>}
             </label>
-            <div className="radioWrapper">
-              <input
-                type="radio"
-                id="Jimbo"
-                name="artist"
-                value="Jimbo"
-                checked={formData.artist === "Jimbo"}
-                onChange={handleChange}
-              />
-              <label className="radioLabel" htmlFor="Jimbo">
-                Jimbo
-              </label>
-            </div>
-            <div className="radioWrapper">
-              <input
-                type="radio"
-                id="Carlie"
-                name="artist"
-                value="Carlie"
-                checked={formData.artist === "Carlie"}
-                onChange={handleChange}
-              />
-              <label className="radioLabel" htmlFor="Carlie">
-                Carlie
-              </label>
-            </div>
-            <div className="radioWrapper">
-              <input
-                type="radio"
-                id="Not Sure"
-                name="artist"
-                value="Not Sure"
-                checked={formData.artist === "Not Sure"}
-                onChange={handleChange}
-              />
-              <label className="radioLabel" htmlFor="Not Sure">
-                Not Sure
-              </label>
-            </div>
-          </div>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={formData.name}
+              required
+              onChange={handleChange}
+            />
 
-          <div
-            className="submitButtonContainer"
-            tabIndex={0}
-            role="button"
-            onClick={handleSubmit}
-            onKeyPress={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                handleSubmit(event);
-              }
-            }}>
-            <div className="submitButton">
-              <h4>Send</h4>
+            <label htmlFor="email">
+              Email {errors.email && <p className="error">{errors.email}</p>}
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={formData.email}
+              required
+              onChange={handleChange}
+            />
+
+            <label htmlFor="phone">
+              Phone {errors.phone && <p className="error">{errors.phone}</p>}
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+
+            <label className="conceptLabel" htmlFor="concept">
+              Concept{" "}
+              <span className={`subLabel ${characterCount < 500 && "show"}`}>
+                ({characterCount})
+              </span>
+            </label>
+            <textarea
+              id="concept"
+              name="concept"
+              value={formData.concept}
+              maxLength={500}
+              required
+              onChange={handleChange}></textarea>
+
+            <div className="radioContainer">
+              <label className="artistLabel" htmlFor="artist">
+                Artist {errors.artist && <p className="error">{errors.artist}</p>}
+              </label>
+              <div className="radioWrapper">
+                <input
+                  type="radio"
+                  id="Jimbo"
+                  name="artist"
+                  value="Jimbo"
+                  checked={formData.artist === "Jimbo"}
+                  onChange={handleChange}
+                />
+                <label className="radioLabel" htmlFor="Jimbo">
+                  Jimbo
+                </label>
+              </div>
+              <div className="radioWrapper">
+                <input
+                  type="radio"
+                  id="Carlie"
+                  name="artist"
+                  value="Carlie"
+                  checked={formData.artist === "Carlie"}
+                  onChange={handleChange}
+                />
+                <label className="radioLabel" htmlFor="Carlie">
+                  Carlie
+                </label>
+              </div>
+              <div className="radioWrapper">
+                <input
+                  type="radio"
+                  id="Not Sure"
+                  name="artist"
+                  value="Not Sure"
+                  checked={formData.artist === "Not Sure"}
+                  onChange={handleChange}
+                />
+                <label className="radioLabel" htmlFor="Not Sure">
+                  Not Sure
+                </label>
+              </div>
             </div>
+
+            <div
+              className="submitButtonContainer"
+              tabIndex={0}
+              role="button"
+              onClick={handleSubmit}
+              onKeyPress={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  handleSubmit(event);
+                }
+              }}>
+              <div className="submitButton">
+                <h4>Send</h4>
+              </div>
+            </div>
+          </form>
+          <div
+            className={`artistImageWrapper  ${
+              formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
+            }`}>
+            <img
+              className={`artistImage`}
+              src={
+                formData.artist === "Jimbo"
+                  ? JimboMain
+                  : formData.artist === "Carlie"
+                  ? CarlieMain
+                  : ""
+              }
+              alt={formData.artist}
+            />
           </div>
-        </form>
-        <div
-          className={`artistImageWrapper  ${
-            formData.artist === "Jimbo" || formData.artist === "Carlie" ? "show" : ""
-          }`}>
-          {/* if user selects "Jimbo," image goes from display none to show with src JimboMain, same for Carly and CarlyMain */}
-          <img
-            className={`artistImage`}
-            src={
-              formData.artist === "Jimbo"
-                ? JimboMain
-                : formData.artist === "Carlie"
-                ? CarlieMain
-                : ""
-            }
-            alt={formData.artist}
-          />
         </div>
       </div>
     </div>
