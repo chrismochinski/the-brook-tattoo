@@ -1,7 +1,7 @@
 @import "../../../Globals/GlobalStyles.scss";
 
 .headerDesktop {
- height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -25,6 +25,8 @@
       font-family: $zaiRoyalType;
       line-height: 1.35em;
       transition: color 400ms ease-out;
+      text-shadow: -10px 5px 4px #b2222200;
+      filter: drop-shadow(-10px -7px 4px #b2222200);
       &:before {
         content: "";
         display: block;
@@ -52,8 +54,9 @@
       }
       &:hover {
         color: $white;
-        transition: color 200ms ease-out;
-      
+        transition: color 200ms ease-out, text-shadow 300ms ease-out, filter 300ms ease-out;
+        text-shadow: 2px 0px 3px #b22222;
+        filter: drop-shadow(2px 0px 3px #b22222);
       }
       &:hover::before {
         transform: scaleX(1);
@@ -69,8 +72,7 @@
   }
 }
 
-// mobile header has a mediaquery that says min-width: 992px, so this desktop header should be::after
-
+//  tablet hamburger menu switcheroo
 @media (max-width: 850px) {
   .headerDesktop {
     display: none;

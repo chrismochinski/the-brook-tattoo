@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./HeaderTabletMobile.scss";
 import Logo from "../../../Images/brook-logo-nobg-rough.png";
 
+// idea https://codepen.io/bugrakocak/pen/xodpBR
+
 export function HeaderTabletMobile() {
   const [isOpen, setIsOpen] = useState(false);
 
