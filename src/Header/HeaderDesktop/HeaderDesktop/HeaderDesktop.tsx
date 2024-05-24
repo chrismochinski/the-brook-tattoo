@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import "./HeaderDesktop.scss";
 import Logo from "../../../Images/brook-logo-nobg-rough.png";
 
+// idea - HOVER LEFT BAR SWIPE RIGHT BG BLUR
+
 export function HeaderDesktop() {
   return (
     <div className="headerDesktop">
