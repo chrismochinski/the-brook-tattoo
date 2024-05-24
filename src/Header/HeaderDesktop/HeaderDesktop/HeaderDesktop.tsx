@@ -11,22 +11,22 @@ export function HeaderDesktop() {
 
       <nav className="nav">
         <Link to="/" className="link desktopLink">
-          Home
+          <p>Home</p>
         </Link>
         <Link to="/about" className="link desktopLink">
-          About
+          <p>About</p>
         </Link>
         <Link to="/artists" className="link desktopLink">
-          Artists
+          <p>Artists</p>
         </Link>
         <Link to="/faq" className="link desktopLink">
-          FAQ
+          <p>FAQ</p>
         </Link>
         <Link to="/reviews" className="link desktopLink">
-          Reviews
+          <p>Reviews</p>
         </Link>
         <Link to="/contact" className="link desktopLink">
-          Contact
+          <p>Contact</p>
         </Link>
       </nav>
     </div>

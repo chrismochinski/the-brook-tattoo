@@ -24,22 +24,22 @@ export function HeaderTabletMobile() {
       </div>
       <nav className={`nav ${isOpen ? "open" : ""}`}>
         <Link to="/" className="link mobileLink">
-          Home
+          <p>Home</p>
         </Link>
         <Link to="/about" className="link mobileLink">
-          About
+          <p>About</p>
         </Link>
         <Link to="/artists" className="link mobileLink">
-          Artists
+          <p>Artists</p>
         </Link>
         <Link to="/faq" className="link mobileLink">
-          FAQ
+          <p>FAQ</p>
         </Link>
         <Link to="/reviews" className="link mobileLink">
-          Reviews
+          <p>Reviews</p>
         </Link>
         <Link to="/contact" className="link mobileLink">
-          Contact
+          <p>Contact</p>
         </Link>
       </nav>
     </div>
