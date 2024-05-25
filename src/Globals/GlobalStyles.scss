@@ -129,6 +129,12 @@
 
 // global text preset styles
 
+h1, h2, h3, h4, h5, h6, p, span, a {
+  font-family: $poppins;
+  color: $white;
+  font-weight: 400;
+}
+
 p {
   font-family: $poppins;
   font-size: clamp(14px, 1.5vw, 16px);

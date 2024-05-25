@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useWindowWidth } from "./hooks/useWindowWidth";
 import { Header } from "./Header/HeaderDesktop/Header";
 import { Home } from "./Home/Home";
-import { useWindowWidth } from "./hooks/useWindowWidth";
+import { About } from "./About/About";
 import { ContactForm } from "./ContactForm/ContactForm";
 import "./App.scss";
 import { Footer } from "./Footer/Footer";
@@ -42,6 +43,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactForm />} />
         </Routes>
         <Footer

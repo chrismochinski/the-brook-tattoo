@@ -4,97 +4,121 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
 
   .headerLogoDesktop {
-    width: 160px;
+    width: 190px;
+    transform-origin: center bottom;
+    transition: transform 200ms ease;
   }
-  .nav {
-    container-type: inline-size;
-    width: clamp(280px, 74cqi, 900px);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 300ms ease-out 70ms;
-    .desktopLink {
-      position: relative;
-      text-decoration: none;
-      transform: translateX(0);
-      transform-origin: right center;
-      transition: transform 400ms ease-out;
-      p {
-        padding: 1px 3px 3px 8px;
-        font-weight: normal;
-        transition: color 400ms ease-out, opacity 400ms ease-out, text-shadow 300ms ease-out;
-        text-shadow: -10px 5px 4px #b2222200;
-        filter: drop-shadow(-10px -7px 4px #b2222200);
-        font-size: clamp(14px, 1.85cqi, 17px);
-        line-height: 1.2em;
-        opacity: 0.85;
-        font-family: $zaiRoyalType;
-        margin: 0;
-        color: $sword;
-        z-index: 2;
-      }
-      // sliding vert line
-      &:before {
-        position: absolute;
-        content: "";
-        display: block;
-        width: 3px;
-        border-radius: 1px;
-        height: clamp(17px, 2.2cqi, 21px);
-        opacity: 0.8;
-        background: $firebrick;
-        left: 0;
-        top: 0;
-        filter: blur(0) drop-shadow(-3px 0 3px #b2222290);
-        transition: left 360ms ease-out, opacity 300ms ease-out 80ms;
-        transform-origin: left;
-      }
-      // bg blur
-      &:after {
-        position: absolute;
-        content: "";
-        display: block;
-        width: 0%;
-        border-radius: 7px 0px 0px 7px;
-        height: clamp(10px, 2.4cqi, 23px);
-        opacity: 0.2;
-        background: $firebrick;
-        left: 2px;
-        top: 0;
-        filter: blur(2px);
-        z-index: -1;
-        transition: width 400ms ease-out, opacity 300ms ease-out 80ms, filter 300ms ease-out;
-        transform-origin: left;
-      }
-      &:hover {
-        transform: translateX(-3px);
+  .desktopNavContainer {
+    z-index: 999;
+    width: 100vw;
+    padding-block: 1.5em 1.25em;
+    background-color: transparent;
+    transition: background-color 400ms ease-out 100ms, padding-block 400ms ease-out;
+    .nav {
+      container-type: inline-size;
+      width: clamp(280px, 74cqi, 900px);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 1;
+      transition: opacity 300ms ease-out 70ms;
+      margin-inline: auto;
+      .desktopLink {
+        position: relative;
+        text-decoration: none;
+        transform: translateX(0);
+        transform-origin: right center;
+        transition: transform 400ms ease-out;
         p {
-          color: $white;
-          transition: color 200ms ease-out, text-shadow 300ms ease-out, filter 300ms ease-out;
-          text-shadow: 2px 0px 3px #b22222;
-          filter: drop-shadow(2px 0px 3px #b22222);
+          padding: 1px 3px 3px 8px;
+          font-weight: normal;
+          transition: color 300ms ease-out, opacity 300ms ease-out, text-shadow 300ms ease-out;
+          text-shadow: -10px 5px 4px #b2222200;
+          filter: drop-shadow(-10px -7px 4px #b2222200);
+          font-size: clamp(14px, 1.85cqi, 17px);
+          line-height: 1.2em;
+          opacity: 0.85;
+          font-family: $zaiRoyalType;
+          margin: 0;
+          color: $sword;
+          z-index: 2;
         }
+        // sliding vert line
         &:before {
-          opacity: 1;
-          left: 114%;
-          opacity: 0;
-          filter: blur(1px);
-          transition: left 275ms ease-out, opacity 255ms ease-out 130ms, filter 250ms ease-out;
-        }
-        &:after {
-          width: 100%;
-          opacity: 0.55;
-          border-radius: 4px;
-          filter: blur(5px);
-          transition: width 280ms ease-out, opacity 220ms ease-out, filter 300ms ease-out;
+          position: absolute;
+          content: "";
+          display: block;
+          width: 3px;
+          border-radius: 1px;
+          height: clamp(17px, 2.2cqi, 21px);
+          opacity: 0.8;
+          background: $firebrick;
+          left: 0;
+          top: 0;
+          filter: blur(0) drop-shadow(-3px 0 3px #b2222290);
+          transition: left 360ms ease-out, opacity 300ms ease-out 80ms;
           transform-origin: left;
         }
+        // bg blur
+        &:after {
+          position: absolute;
+          content: "";
+          display: block;
+          width: 0%;
+          border-radius: 7px 0px 0px 7px;
+          height: clamp(10px, 2.4cqi, 23px);
+          opacity: 0.2;
+          background: $firebrick;
+          left: 2px;
+          top: 0;
+          filter: blur(2px);
+          z-index: -1;
+          transition: width 400ms ease-out, opacity 300ms ease-out 80ms, filter 300ms ease-out;
+          transform-origin: left;
+        }
+        &:hover {
+          transform: translateX(-3px);
+          p {
+            color: $white;
+            transition: color 200ms ease-out, text-shadow 300ms ease-out, filter 300ms ease-out;
+            text-shadow: 2px 0px 3px #b22222;
+            filter: drop-shadow(2px 0px 3px #b22222);
+          }
+          &:before {
+            opacity: 1;
+            left: 114%;
+            opacity: 0;
+            filter: blur(1px);
+            transition: left 275ms ease-out, opacity 255ms ease-out 130ms, filter 250ms ease-out;
+          }
+          &:after {
+            width: 100%;
+            opacity: 0.55;
+            border-radius: 4px;
+            filter: blur(5px);
+            transition: width 280ms ease-out, opacity 220ms ease-out, filter 300ms ease-out;
+            transform-origin: left;
+          }
+        }
+      }
+    }
+  }
+
+  &.scrolled {
+    .headerLogoDesktop {
+      display: none;
+    }
+    .desktopNavContainer {
+      position: fixed;
+      top: 0;
+      background-color: $trueBlack;
+      padding-block: 1.5em 1.25em;
+      .nav {
       }
     }
   }

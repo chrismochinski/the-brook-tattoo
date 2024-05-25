@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   .imageWrapper {
+    margin-top: 0;
     .imageInnerWrapper {
       container-type: inline-size;
       position: relative;
@@ -72,7 +73,7 @@
           backdrop-filter: blur(1px);
           h2 {
             @extend .lineNormal;
-            color: $gold;
+            color: $white;
             font-family: $poppins;
             font-weight: 400;
             padding-block: 0.1em;

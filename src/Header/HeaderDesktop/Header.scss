@@ -2,9 +2,9 @@
 
 .header {
   width: 100vw;
-  height: 200px;
+  height: 225px;
   transition: height 500ms ease;
-  background: linear-gradient(to bottom, #000000 30%, #00000060 100%);
+  background: linear-gradient(to bottom, #000000 50%, #00000000 90%);
 }
 
 @media (max-width: 1024px) {
