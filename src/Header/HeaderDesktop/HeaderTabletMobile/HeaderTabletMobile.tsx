@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HeaderTabletMobile.scss";
-import { HeaderProps, pages } from "../Header";
+import { SiteNavProps, pages } from "../../../App";
 import Logo from "../../../Images/brook-logo-nobg-rough.png";
 
-export function HeaderTabletMobile(props: HeaderProps) {
+export function HeaderTabletMobile(props: SiteNavProps) {
   const { selectedPage, setSelectedPage, isTabletOrMobile } = props;
   const [isOpen, setIsOpen] = useState(false);
 

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import "./HeaderDesktop.scss";
-import { HeaderProps, pages } from "../Header";
+import { SiteNavProps, pages } from "../../../App";
 import Logo from "../../../Images/brook-logo-nobg-rough.png";
 
-export function HeaderDesktop(props: HeaderProps) {
+export function HeaderDesktop(props: SiteNavProps) {
   const { selectedPage, setSelectedPage, isTabletOrMobile } = props;
 
   return (

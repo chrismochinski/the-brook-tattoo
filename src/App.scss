@@ -1,25 +1,7 @@
 @import "./Globals/GlobalStyles.scss";
 
 .App {
-  background-color: $black;
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  .underConstructionText {
-    color: $white;
-    margin-top: 0;
-    padding-inline: 3vw;
-    max-width: 800px;
-    margin-inline: auto;
-    text-wrap: balance;
-    font-style: italic;
-    margin-top: 0;
-    font-size: clamp(18px, calc(1.2vw + 1.2vh), 20px);
-
-  }
+  position: relative;
 }
 
 @media (prefers-reduced-motion: no-preference) {

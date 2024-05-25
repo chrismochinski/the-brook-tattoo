@@ -1,0 +1,41 @@
+@import "../Globals/GlobalStyles.scss";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 190px;
+  background: $trueBlack;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .footerContentWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: min(24vw, 16em);
+    align-items: center;
+
+    .footerColumn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75em;
+      .footerLink {
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        font-family: $albertsType;
+        color: $white;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    .footerContentWrapper {
+    //   gap: 22vw;
+    }
+  }
+}

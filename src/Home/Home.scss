@@ -72,15 +72,25 @@
           backdrop-filter: blur(1px);
           h2 {
             @extend .lineNormal;
-            color: $white;
+            color: $gold;
             font-family: $poppins;
             font-weight: 400;
             padding-block: 0.1em;
-            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-size: clamp(0.9rem, 2.8cqi, 1.25rem);
             letter-spacing: min(0.4em, calc(0.2em + 0.6vw));
           }
         }
       }
+    }
+  }
+
+  .bio {
+    margin-top: 0;
+    p {
+      margin-inline: auto;
+      max-width: 920px;
+      font-size: 1.25em;
+      text-align: center;
     }
   }
 }
@@ -102,7 +112,7 @@
         padding-inline: 3vw;
         .imageInnerWrapper {
           .titleOverlay {
-            gap: 2vw;
+            gap: 1.5vw;
             .titleBar {
               height: clamp(39px, 8.4cqi, 60px);
               background: linear-gradient(
