@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HeaderTabletMobile.scss";
+import { HeaderProps, pages } from "../Header";
 import Logo from "../../../Images/brook-logo-nobg-rough.png";
 
-// idea https://codepen.io/bugrakocak/pen/xodpBR
-
-export function HeaderTabletMobile() {
+export function HeaderTabletMobile(props: HeaderProps) {
+  const { selectedPage, setSelectedPage, isTabletOrMobile } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLinkClick = (page: string) => {
+    setSelectedPage(page);
+    setIsOpen(false);
   };
 
   return (
@@ -22,25 +27,18 @@ export function HeaderTabletMobile() {
       <div tabIndex={0} role="button" className="hamburger" onClick={toggleMenu}>
         🍔
       </div>
-      <nav className={`nav ${isOpen ? "open" : ""}`}>
-        <Link to="/" className="link mobileLink">
-          <p>Home</p>
-        </Link>
-        <Link to="/about" className="link mobileLink">
-          <p>About</p>
-        </Link>
-        <Link to="/artists" className="link mobileLink">
-          <p>Artists</p>
-        </Link>
-        <Link to="/faq" className="link mobileLink">
-          <p>FAQ</p>
-        </Link>
-        <Link to="/reviews" className="link mobileLink">
-          <p>Reviews</p>
-        </Link>
-        <Link to="/contact" className="link mobileLink">
-          <p>Contact</p>
-        </Link>
+      <nav className={`nav mobileNav ${isOpen ? "open" : ""}`}>
+        {pages.map((page) => (
+          <Link
+            key={page.name}
+            to={page.path}
+            className={`link mobileLink ${
+              selectedPage === page.name.toLowerCase() ? "selected" : ""
+            }`}
+            onClick={() => handleLinkClick(page.name.toLowerCase())}>
+            <p>{page.name}</p>
+          </Link>
+        ))}
       </nav>
     </div>
   );

@@ -5,8 +5,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .storeFrontImage {
-    margin-inline: 'auto';
-    padding-top: min(1em, calc(1vh + 1vw));
+  .imageWrapper {
+    width: 950px;
+    .storeFrontImage {
+      margin-inline: 'auto';
+      // padding-top: min(1em, calc(1vh + 1vw));
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .home {
+    .imageWrapper {
+      width: clamp(280px, 90vw, 950px);
+      .storeFrontImage {
+        width: 100%;
+      }
+    }
   }
 }
