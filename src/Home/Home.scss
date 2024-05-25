@@ -6,10 +6,81 @@
   justify-content: center;
   align-items: center;
   .imageWrapper {
-    width: 950px;
-    .storeFrontImage {
-      margin-inline: 'auto';
-      // padding-top: min(1em, calc(1vh + 1vw));
+    .imageInnerWrapper {
+      container-type: inline-size;
+      position: relative;
+      .storeFrontImage {
+        width: 100%;
+        height: 100%;
+      }
+      .titleOverlay {
+        position: absolute;
+        z-index: 2;
+        text-align: center;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: min(1em, 1vw);
+        .titleBar {
+          position: relative;
+          height: clamp(30px, 10cqi, 70px);
+          width: 100%;
+          background: linear-gradient(
+            90deg,
+            #00000002 0%,
+            #00000099 23%,
+            #000000dd 50%,
+            #00000099 77%,
+            #00000002 100%
+          );
+          backdrop-filter: blur(1px);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          h1 {
+            @extend .lineNormal;
+            font-size: clamp(2rem, 6.5vw, 3.5rem);
+            color: $white;
+            position: absolute;
+            margin: auto;
+            inset: 0;
+            font-family: $albertsType;
+            font-weight: 400;
+            &.backgroundTitle {
+              opacity: 0.35;
+              color: $firebrick;
+              font-family: $leapingType;
+              font-size: clamp(2rem, 8vw, 4.75rem);
+            }
+          }
+        }
+        .subtitleBar {
+          width: 100%;
+          background: linear-gradient(
+            90deg,
+            #00000012 0%,
+            #000000aa 16%,
+            #000000cf 50%,
+            #000000aa 84%,
+            #00000012 100%
+          );
+          backdrop-filter: blur(1px);
+          h2 {
+            @extend .lineNormal;
+            color: $white;
+            font-family: $poppins;
+            font-weight: 400;
+            padding-block: 0.1em;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            letter-spacing: min(0.4em, calc(0.2em + 0.6vw));
+          }
+        }
+      }
     }
   }
 }
@@ -20,6 +91,47 @@
       width: clamp(280px, 90vw, 950px);
       .storeFrontImage {
         width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home {
+      .imageWrapper {
+        width: 100%;
+        padding-inline: 3vw;
+        .imageInnerWrapper {
+          .titleOverlay {
+            gap: 2vw;
+            .titleBar {
+              height: clamp(39px, 8.4cqi, 60px);
+              background: linear-gradient(
+                90deg,
+                #00000020 0%,
+                #000000aa 10%,
+                #000000cb 50%,
+                #000000aa 90%,
+                #00000020 100%
+              );
+              h1 {
+                &.backgroundTitle {
+                  font-weight: bold;
+                  font-size: 2em;
+                }
+              }
+            }
+            .subtitleBar {
+              background: linear-gradient(
+                90deg,
+                #00000012 0%,
+                #000000AA 8%,
+                #000000AB 50%,
+                #000000AA 92%,
+                #00000012 100%
+              );
+            }
+          }
+        }
       }
     }
   }

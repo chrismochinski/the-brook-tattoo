@@ -12,8 +12,10 @@
   width: 100vw;
   height: fit-content;
   margin-block: min(2em, calc(2vh + 2vw));
-  padding-left: max(6vw, (100vw - 1280px)/2);
-  padding-right: max(6vw, (100vw - 1280px)/2);
+  padding-inline: max(4vw, (100vw - 1000px)/2);
+  @media (max-width: 1024px) {
+    padding-inline: 4vw;
+  }
 }
 
 .container {
