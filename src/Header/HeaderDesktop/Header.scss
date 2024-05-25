@@ -4,10 +4,10 @@
   width: 100vw;
   height: 200px;
   transition: height 500ms ease;
-  background: linear-gradient(to bottom, #000000, #00000070);
+  background: linear-gradient(to bottom, #000000 30%, #00000060 100%);
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1024px) {
   .header {
     height: 100px;
   }
