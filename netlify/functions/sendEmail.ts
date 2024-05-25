@@ -23,7 +23,7 @@ exports.handler = async (event: any) => {
     to: recipientEmail,
     from: {
       email: "workflow@wreckshopmedia.com",
-      name: "Wreck Shop - Workflow",
+      name: "Inquiry",
     },
     subject: subject,
     text: `Hi ${artist}!\n\nYou have received a form submission!\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nConcept: ${concept}`,
