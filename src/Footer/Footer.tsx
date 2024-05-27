@@ -21,6 +21,10 @@ export function Footer(props: FooterProps) {
               <h6 className="divider"> | </h6>
               <h6 className="phone">651-346-1153</h6>
             </div>
+
+            <a className="email" href="mailto:thebrooktattoo@gmail.com">
+              thebrooktattoo@gmail.com
+            </a>
           </div>
           <div className="socials">
             <Link

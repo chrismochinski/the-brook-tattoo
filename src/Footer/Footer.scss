@@ -29,6 +29,7 @@
           column-gap: 0.5em;
           row-gap: 0;
           line-height: 1.125em;
+          padding-block: 1px 0;
           h6 {
             font-family: $poppins;
             margin-block: 0;
@@ -38,27 +39,64 @@
             }
           }
         }
+        .email {
+          font-family: $poppins;
+          margin-block: 0;
+          font-weight: 200;
+          font-size: clamp(0.83em, 1.2vw, 1.075em);
+          letter-spacing: 0.125em;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-decoration-color: $firebrick;
+            text-underline-offset: 0.2em;
+          }
+        }
       }
     }
     .socials {
+      height: 70px;
       display: flex;
       flex-direction: row;
       gap: min(0.75em, 1vw);
       justify-content: center;
       align-items: center;
       .socialLink {
+        height: 50px;
+        transition: filter 300ms ease-out;
+
         svg {
+          transition: transform 300ms ease-out, filter 300ms ease-out, fill 300ms ease-out, stroke-width 300ms ease-out;
           width: 50px;
           height: 50px;
+          path {
+            transition: transform 300ms ease-out, fill 300ms ease-out, stroke-width 300ms ease-out, filter 300ms ease-out;
+
+          }
         }
         &:hover {
-          filter: drop-shadow(0 0 5px $firebrick);
+          filter: drop-shadow(0 0 4px $firebrick);
+          transition: filter 170ms ease-out;
           svg {
-            filter: drop-shadow(0 0 5px $firebrick);
+            transform: rotate(8deg);
+            transition: transform 170ms ease-out, filter 170ms ease-out;
+            filter: drop-shadow(0 0 4px $firebrick);
             path {
-              filter: drop-shadow(0 0 8px $firebrick);
+              transition: transform 170ms ease-out, fill 170ms ease-out, stroke-width 170ms ease-out, filter 170ms ease-out;
+
+              filter: drop-shadow(0 0 6px $firebrick);
               &.instagramBlackRed {
                 fill: $firebrick;
+              }
+              &.whiteCircle {
+                stroke-width: 4;
+              }
+              &[stroke="#9f9f9f"] {
+                stroke: $white;
+              }
+              &[fill="#9f9f9f"] {
+                fill: $white;
               }
             }
           }
@@ -87,26 +125,31 @@
 
 @media (max-width: 575px) {
   .footer {
-    height: 159px;
+    height: 167px;
     .footerContentWrapper {
       height: 97%;
       .footerFlexSplit {
         flex-direction: column;
-
         justify-content: space-evenly;
         align-items: center;
         .left {
-          .address {
-            padding-top: 1px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .email {
+            text-align: center;
+            margin-inline: auto;
           }
         }
       }
       .socials {
         gap: 0.5em;
+        height: 47px;
         .socialLink {
           svg {
-            width: 47px;
-            height: 47px;
+            width: 43px;
+            height: 43px;
           }
         }
       }

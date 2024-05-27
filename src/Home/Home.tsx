@@ -23,35 +23,22 @@ export function Home() {
           </div>
         </div>
       </div>
+
       <div className="bio section">
         <p>
-          At The Brook, every detail has been meticulously crafted with passion and dedication. From
-          the sleek, classy design to the spacious, open floor plan, our studio exudes an atmosphere
-          of warmth and sophistication that clients can't help but admire. As a private studio, we
-          pride ourselves on offering a more intimate tattoo experience, where clients feel truly
-          involved and valued. Step into our world, where every tattoo is a collaborative journey
-          and every client is treated with the utmost care and respect.
-        </p>
-      </div>
-      <div className="bio section">
-        <p>
-          At The Brook, every detail has been meticulously crafted with passion and dedication. From
-          the sleek, classy design to the spacious, open floor plan, our studio exudes an atmosphere
-          of warmth and sophistication that clients can't help but admire. As a private studio, we
-          pride ourselves on offering a more intimate tattoo experience, where clients feel truly
-          involved and valued. Step into our world, where every tattoo is a collaborative journey
-          and every client is treated with the utmost care and respect.
-        </p>
-      </div>
-     
-      <div className="bio section">
-        <p>
-          At The Brook, every detail has been meticulously crafted with passion and dedication. From
-          the sleek, classy design to the spacious, open floor plan, our studio exudes an atmosphere
-          of warmth and sophistication that clients can't help but admire. As a private studio, we
-          pride ourselves on offering a more intimate tattoo experience, where clients feel truly
-          involved and valued. Step into our world, where every tattoo is a collaborative journey
-          and every client is treated with the utmost care and respect.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, nam at aperiam et sunt
+          excepturi debitis, suscipit blanditiis laboriosam odit sequi cupiditate ea aut voluptate,
+          facilis dolorem hic! Sequi soluta provident nobis ipsum nihil impedit temporibus quas
+          similique laborum eveniet quos odio adipisci delectus totam, dicta dolores quae, esse
+          facere? Sit cum, ipsum explicabo eaque officiis placeat voluptatum ratione assumenda
+          delectus rerum necessitatibus voluptatem eligendi facere illum mollitia! Debitis quod
+          quidem aliquam deserunt aliquid voluptatibus culpa asperiores atque distinctio! Eum,
+          cumque quam pariatur reprehenderit nisi cupiditate? Voluptatum aliquid saepe, magni cum ad
+          beatae eos, nisi reiciendis quasi in accusantium quis laborum recusandae natus itaque
+          perspiciatis deserunt iure praesentium officiis adipisci exercitationem dolores aliquam.
+          Repellendus laborum architecto ipsum, suscipit repellat eligendi assumenda mollitia
+          deleniti quaerat vitae officiis, quos dolore debitis harum inventore illo exercitationem
+          fugit, officia veritatis? Quisquam quam obcaecati soluta?
         </p>
       </div>
     </div>
