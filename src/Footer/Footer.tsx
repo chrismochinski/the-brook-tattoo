@@ -1,4 +1,5 @@
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter } from "../svg";
 
 interface FooterProps {
@@ -22,9 +23,21 @@ export function Footer(props: FooterProps) {
             </div>
           </div>
           <div className="socials">
-            <Facebook />
-            <Instagram />
-            <Twitter />
+            <Link
+              to="https://www.facebook.com/p/The-Brook-100063729277864/"
+              target="_blank"
+              className="socialLink">
+              <Facebook />
+            </Link>
+            <Link
+              to="https://www.instagram.com/thebrooktattoo/"
+              target="_blank"
+              className="socialLink">
+              <Instagram />
+            </Link>
+            <Link to="https://x.com/JimboTattoo" target="_blank" className="socialLink">
+              <Twitter />
+            </Link>
           </div>
         </div>
         <p className="copyright">Copyright &copy; The Brook Tattoo - All Rights Reserved</p>

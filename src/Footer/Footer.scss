@@ -46,9 +46,23 @@
       gap: min(0.75em, 1vw);
       justify-content: center;
       align-items: center;
-      svg {
-        width: 50px;
-        height: 50px;
+      .socialLink {
+        svg {
+          width: 50px;
+          height: 50px;
+        }
+        &:hover {
+          filter: drop-shadow(0 0 5px $firebrick);
+          svg {
+            filter: drop-shadow(0 0 5px $firebrick);
+            path {
+              filter: drop-shadow(0 0 8px $firebrick);
+              &.instagramBlackRed {
+                fill: $firebrick;
+              }
+            }
+          }
+        }
       }
     }
     .copyright {
@@ -71,7 +85,6 @@
   }
 }
 
-
 @media (max-width: 575px) {
   .footer {
     height: 159px;
@@ -79,23 +92,22 @@
       height: 97%;
       .footerFlexSplit {
         flex-direction: column;
-        
+
         justify-content: space-evenly;
         align-items: center;
         .left {
           .address {
             padding-top: 1px;
-            h6 {
-            }
           }
         }
       }
       .socials {
         gap: 0.5em;
-        svg {
-          width: 47px;
-          height: 47px;
-        
+        .socialLink {
+          svg {
+            width: 47px;
+            height: 47px;
+          }
         }
       }
       .copyright {
