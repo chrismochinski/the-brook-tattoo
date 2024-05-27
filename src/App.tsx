@@ -11,7 +11,6 @@ import { Footer } from "./Footer/Footer";
 export const pages = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Artists", path: "/artists" },
   { name: "FAQ", path: "/faq" },
   { name: "Reviews", path: "/reviews" },
   { name: "Contact", path: "/contact" },
@@ -47,8 +46,6 @@ function App() {
           <Route path="/contact" element={<ContactForm />} />
         </Routes>
         <Footer
-          selectedPage={selectedPage}
-          setSelectedPage={setSelectedPage}
           isTabletOrMobile={isTabletOrMobile}
         />
       </Router>

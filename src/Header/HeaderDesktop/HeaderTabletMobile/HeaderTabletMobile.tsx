@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./HeaderTabletMobile.scss";
 import { SiteNavProps, pages } from "../../../App";
@@ -16,6 +16,12 @@ export function HeaderTabletMobile(props: SiteNavProps) {
     setSelectedPage(page);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (!isTabletOrMobile) {
+      setIsOpen(false);
+    }
+  }, [isTabletOrMobile]);
 
   return (
     <div className="headerTabletMobile">

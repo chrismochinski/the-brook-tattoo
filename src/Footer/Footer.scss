@@ -1,41 +1,106 @@
 @import "../Globals/GlobalStyles.scss";
 
 .footer {
-  // position: absolute;
   bottom: 0;
   width: 100vw;
-  height: 190px;
+  height: 131px;
   background: $trueBlack;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   .footerContentWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: min(24vw, 16em);
-    align-items: center;
-
-    .footerColumn {
+    position: relative;
+    height: 90%;
+    .footerFlexSplit {
+      height: 90%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-inline: min(3vw, 3em);
+      align-items: center;
+      .left {
+        h4 {
+          font-family: $albertsType;
+          font-weight: 600;
+          font-size: clamp(2em, 3.125vw, 2.6em);
+          text-align: left;
+          margin-block: 0;
+        }
+        .address {
+          display: flex;
+          flex-direction: row;
+          column-gap: 0.5em;
+          row-gap: 0;
+          line-height: 1.125em;
+          h6 {
+            font-family: $poppins;
+            margin-block: 0;
+            font-size: clamp(0.83em, 1.35vw, 1.124em);
+            &.divider {
+              color: $firebrick;
+            }
+          }
+        }
+      }
+    }
+    .socials {
+      display: flex;
+      flex-direction: row;
+      gap: min(0.75em, 1vw);
       justify-content: center;
       align-items: center;
-      gap: 0.75em;
-      .footerLink {
-        font-size: clamp(1.25rem, 3vw, 1.5rem);
-        font-family: $albertsType;
-        color: $white;
+      svg {
+        width: 50px;
+        height: 50px;
       }
+    }
+    .copyright {
+      position: absolute;
+      inset: auto 0 0 0;
+      margin: auto;
+      margin-block: 0;
+      letter-spacing: min(0.5vw, 0.05em);
+      font-family: $poppins;
+      font-size: clamp(13px, 1.5vw, 14px);
+      font-weight: 200;
+      text-align: center;
     }
   }
 }
 
 @media (max-width: 768px) {
   .footer {
+    height: 145px;
+  }
+}
+
+
+@media (max-width: 575px) {
+  .footer {
+    height: 159px;
     .footerContentWrapper {
-    //   gap: 22vw;
+      height: 97%;
+      .footerFlexSplit {
+        flex-direction: column;
+        
+        justify-content: space-evenly;
+        align-items: center;
+        .left {
+          .address {
+            padding-top: 1px;
+            h6 {
+            }
+          }
+        }
+      }
+      .socials {
+        gap: 0.5em;
+        svg {
+          width: 47px;
+          height: 47px;
+        
+        }
+      }
+      .copyright {
+        padding-bottom: 3px;
+      }
     }
   }
 }

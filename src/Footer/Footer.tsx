@@ -1,38 +1,33 @@
-import { SiteNavProps, pages } from "../App";
 import "./Footer.scss";
+import { Facebook, Instagram, Twitter } from "../svg";
 
-export function Footer(props: SiteNavProps) {
-  const { selectedPage, setSelectedPage, isTabletOrMobile } = props;
+interface FooterProps {
+  isTabletOrMobile: boolean;
+}
+
+export function Footer(props: FooterProps) {
+  const { isTabletOrMobile } = props;
   return (
     <div className="footer">
       <div className="footerContentWrapper">
-        {/* Loop through the siz pages and create two columns of three */}
-        <div className="footerColumn">
-          {pages.slice(0, 3).map((page) => {
-            return (
-              <div
-                className={`footerLink ${
-                  selectedPage === page.name.toLowerCase() ? "selected" : ""
-                }`}
-                onClick={() => setSelectedPage(page.name.toLowerCase())}>
-                {page.name}
-              </div>
-            );
-          })}
+        <div className="footerFlexSplit">
+          <div className="left">
+            <h4>The Brook Tattoo</h4>
+            <div className="address">
+              <h6>105 2nd St E</h6>
+              <h6 className="divider"> | </h6>
+              <h6>Hastings, MN</h6>
+              <h6 className="divider"> | </h6>
+              <h6 className="phone">651-346-1153</h6>
+            </div>
+          </div>
+          <div className="socials">
+            <Facebook />
+            <Instagram />
+            <Twitter />
+          </div>
         </div>
-        <div className="footerColumn">
-          {pages.slice(3, 6).map((page) => {
-            return (
-              <div
-                className={`footerLink ${
-                  selectedPage === page.name.toLowerCase() ? "selected" : ""
-                }`}
-                onClick={() => setSelectedPage(page.name.toLowerCase())}>
-                {page.name}
-              </div>
-            );
-          })}
-        </div>
+        <p className="copyright">Copyright &copy; The Brook Tattoo - All Rights Reserved</p>
       </div>
     </div>
   );

@@ -11,7 +11,6 @@ export function HeaderDesktop(props: SiteNavProps) {
   useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
-      console.log("in handle scroll", position);
       setScrollPosition(position);
     };
 
@@ -19,17 +18,22 @@ export function HeaderDesktop(props: SiteNavProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const maxScroll = 258; // Increased max scroll for slower transitions
-  const scale = scrollPosition < maxScroll ? 1 + scrollPosition / (maxScroll * 2) : 1.5; // Scale up from 1 to 1.5 more slowly
-  const translateY = scrollPosition < 129 ? -scrollPosition / 12.9 : -10; // Very slow upward movement
-  const opacity = scrollPosition < maxScroll ? 1 - scrollPosition / maxScroll : 0; // Slower opacity change
+  const maxScroll = 258;
+  const scale = scrollPosition < maxScroll ? 1 + scrollPosition / (maxScroll * 2) : 1.5;
+  const translateY = scrollPosition < 129 ? -scrollPosition / 12.9 : -10;
+  const opacity = scrollPosition < maxScroll ? 1 - scrollPosition / maxScroll : 0;
+  const blur = scrollPosition < maxScroll ? scrollPosition / (maxScroll / 5) : 5;
 
   return (
     <div className={`headerDesktop ${scrollPosition > 155 ? "scrolled" : ""}`}>
       <img
         className="headerLogoDesktop"
         src={Logo}
-        style={{ transform: `scale(${scale}) translateY(${translateY}px)`, opacity: opacity }}
+        style={{
+          transform: `scale(${scale}) translateY(${translateY}px)`,
+          opacity: opacity,
+          filter: `blur(${blur}px)`,
+        }}
         alt="The Brook Tattoo Studio Header Logo"
       />
       <div className="desktopNavContainer">
