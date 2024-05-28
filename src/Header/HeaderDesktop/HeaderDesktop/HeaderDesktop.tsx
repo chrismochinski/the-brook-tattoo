@@ -18,6 +18,7 @@ export function HeaderDesktop(props: SiteNavProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // header image and menu scrolling effects
   const maxScroll = 258;
   const scale = scrollPosition < maxScroll ? 1 + scrollPosition / (maxScroll * 2) : 1.5;
   const translateY = scrollPosition < 129 ? -scrollPosition / 12.9 : -10;
@@ -25,7 +26,7 @@ export function HeaderDesktop(props: SiteNavProps) {
   const blur = scrollPosition < maxScroll ? scrollPosition / (maxScroll / 5) : 5;
 
   return (
-    <div className={`headerDesktop ${scrollPosition > 155 ? "scrolled" : ""}`}>
+    <div className={`headerDesktop ${scrollPosition > 162 ? "scrolled" : ""}`}>
       <img
         className="headerLogoDesktop"
         src={Logo}

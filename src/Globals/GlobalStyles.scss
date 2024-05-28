@@ -12,7 +12,7 @@
   width: 100vw;
   height: fit-content;
   margin-block: min(2em, calc(2vh + 2vw));
-  padding-inline: max(4vw, (100vw - 1000px)/2);
+  padding-inline: max(4vw, (100vw - 1200px)/2);
   @media (max-width: 1024px) {
     padding-inline: 4vw;
   }
@@ -129,7 +129,15 @@
 
 // global text preset styles
 
-h1, h2, h3, h4, h5, h6, p, span, a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
   font-family: $poppins;
   color: $white;
   font-weight: 400;
@@ -137,12 +145,24 @@ h1, h2, h3, h4, h5, h6, p, span, a {
 
 p {
   font-family: $poppins;
-  font-size: clamp(14px, 1.5vw, 16px);
+  font-size: 1.25em;
   font-weight: 300;
   color: $white;
   letter-spacing: 0.025em;
   margin-block: 1em;
   line-height: 1.35em;
+}
+
+.pageTitle {
+  font-size: clamp(2.75rem, 9vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.25em;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.25em;
 }
 
 .theBrookLogo {
@@ -177,28 +197,27 @@ p {
   text-transform: uppercase;
 }
 
-.leftText {
-  text-align: left;
-}
-
+.leftText,
 .textLeft {
   text-align: left;
 }
 
-.centerText {
-  text-align: center;
-}
-
+.centerText,
 .textCenter {
   text-align: center;
 }
 
-.rightText {
+.rightText,
+.textRight {
   text-align: right;
 }
 
-.textRight {
-  text-align: right;
+.pretty {
+  text-wrap: pretty;
+}
+
+.balance {
+  text-wrap: balance;
 }
 
 // logo text top line

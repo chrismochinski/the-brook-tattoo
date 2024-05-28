@@ -1,0 +1,71 @@
+@import "../Globals/GlobalStyles.scss";
+
+.bookNowButton {
+  position: relative;
+  background-color: $gunz;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  border-radius: 0.25em;
+  text-decoration: none;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 400ms ease-in-out, box-shadow 400ms ease-in-out;
+  box-shadow: 2px 2px 4px 0px #00000000;
+  height: 2.875em;
+  width: 8.75em;
+  &.small {
+    font-size: clamp(0.875em, 2vw, 1em);
+  }
+  &.medium {
+    font-size: clamp(1em, 2vw, 1.175em);
+  }
+  &.large {
+    font-size: clamp(1.125em, 2vw, 1.25em);
+  }
+
+  h3 {
+    font-weight: 500;
+    color: $white;
+    z-index: 1;
+    text-transform: uppercase;
+    font-family: $poppins;
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    z-index: 0;
+    background-color: $blood;
+    transition: width 400ms ease-in-out, opacity 400ms ease-in-out;
+    opacity: 0.3;
+    position: absolute;
+    border-radius: 0.25em;
+    overflow: hidden;
+  }
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 4px 8px 2px #000000;
+    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;  
+    h3 {
+    }
+    &:after {
+      opacity: 1;
+      width: 100%;
+      transition: width 200ms ease-in-out, opacity 200ms ease-in-out;
+
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .bookNowButton {
+    height: 3.4em;
+    width: 11em;
+    h3 {
+      font-size: 1.425em;
+    }
+  }
+}

@@ -1,10 +1,14 @@
 import StoreFront from "../Images/brook-placeholder-front.jpeg";
+import JimboMain from "../../src/Images/jimbo-masked.png";
+import CarlieMain from "../../src/Images/carlie-masked.png";
 import "./Home.scss";
+import { Link } from "react-router-dom";
+import { BookNowButton } from "../BookNowButton/BookNowButton";
 
 export function Home() {
   return (
     <div className="home">
-      <div className="imageWrapper section">
+      <div className="imageWrapperSection section">
         <div className="imageInnerWrapper">
           <img
             width="100%"
@@ -24,23 +28,28 @@ export function Home() {
         </div>
       </div>
 
-      <div className="bio section">
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, nam at aperiam et sunt
-          excepturi debitis, suscipit blanditiis laboriosam odit sequi cupiditate ea aut voluptate,
-          facilis dolorem hic! Sequi soluta provident nobis ipsum nihil impedit temporibus quas
-          similique laborum eveniet quos odio adipisci delectus totam, dicta dolores quae, esse
-          facere? Sit cum, ipsum explicabo eaque officiis placeat voluptatum ratione assumenda
-          delectus rerum necessitatibus voluptatem eligendi facere illum mollitia! Debitis quod
-          quidem aliquam deserunt aliquid voluptatibus culpa asperiores atque distinctio! Eum,
-          cumque quam pariatur reprehenderit nisi cupiditate? Voluptatum aliquid saepe, magni cum ad
-          beatae eos, nisi reiciendis quasi in accusantium quis laborum recusandae natus itaque
-          perspiciatis deserunt iure praesentium officiis adipisci exercitationem dolores aliquam.
-          Repellendus laborum architecto ipsum, suscipit repellat eligendi assumenda mollitia
-          deleniti quaerat vitae officiis, quos dolore debitis harum inventore illo exercitationem
-          fugit, officia veritatis? Quisquam quam obcaecati soluta?
-        </p>
+      <div className="homeImagesSection section row">
+        <img className="homeJimboImage" src={JimboMain} alt="Jimbo" />
+        <div className="bookNowButtonContainer">
+          <BookNowButton />
+        </div>
+        <img className="homeCarlieImage" src={CarlieMain} alt="Carlie" />
       </div>
+
+      <p className="homeTextSection section">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates suscipit deserunt
+        repellat placeat sunt! Iste perferendis illum cupiditate, officia obcaecati culpa iure,
+        molestias tempore accusamus ex cum animi, reiciendis eveniet. Quia esse ratione asperiores!
+        Molestias adipisci ea laudantium accusantium nesciunt esse excepturi, veniam culpa, ipsam,
+        officiis quisquam ad earum minus perferendis. Consequuntur facilis, voluptas optio tempore
+        fuga ullam aut odio dicta sint possimus perferendis sequi. Ea explicabo perspiciatis odio
+        commodi recusandae, adipisci incidunt libero facere quasi in maiores, praesentium esse a
+        vero sed suscipit nisi doloribus voluptatum? Iste quaerat deleniti delectus repudiandae in
+        ipsum? Debitis modi, quam magnam fugiat ad maiores vero reprehenderit recusandae ipsam cum
+        obcaecati, tenetur iusto ducimus, esse voluptate iste maxime laboriosam hic error facilis
+        impedit illo. Praesentium laboriosam quidem nulla odit eligendi. Voluptatibus, fugiat omnis.
+        Culpa voluptas fugit fugiat explicabo veritatis! Fugiat libero reiciendis pariatur cumque.
+      </p>
     </div>
   );
 }

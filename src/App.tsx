@@ -11,7 +11,7 @@ import { Footer } from "./Footer/Footer";
 export const pages = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "FAQ", path: "/faq" },
+  { name: "Aftercare", path: "/aftercare" },
   { name: "Reviews", path: "/reviews" },
   { name: "Contact", path: "/contact" },
 ];

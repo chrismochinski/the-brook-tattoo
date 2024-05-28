@@ -1,5 +1,67 @@
 @import "../Globals/GlobalStyles.scss";
 
 .about {
-    
+    background: linear-gradient(to bottom, $black 15%, $trueBlack 40%, $trueBlack 60%, $black 85%);
+
+  .bioSection {
+    gap: min(2.5em, 3vw);
+    p {
+      font-size: clamp(1rem, 2.25vw, 1.25rem);
+    }
+    .bioTextContainer {
+    }
+    .desktopImage {
+      display: block;
+      width: clamp(200px, 36vw, 380px);
+    }
+    .mobileImage {
+      display: none;
+      width: clamp(200px, 36vw, 380px);
+    }
+    &.mainBioSection {
+      margin-bottom: min(3em, 5vw);
+    }
+  }
+  .bookNowButtonContainer {
+    padding-block: min(2em, 4vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    .bioSection {
+      .bioTextContainer {
+        p {
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .about {
+    .bioSection {
+      p {
+        font-size: 1.125em;
+      }
+      &.row {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        h2 {
+          font-size: 2.5em;
+        }
+        .desktopImage {
+          display: none;
+        }
+        .mobileImage {
+          margin-inline: auto;
+          padding-block: min(1em, 2vw);
+          width: clamp(260px, 70vw, 360px);
+          display: block;
+        }
+      }
+    }
+  }
 }
