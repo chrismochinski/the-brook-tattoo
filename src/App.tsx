@@ -46,7 +46,6 @@ function App() {
           <Route path="/contact" element={<ContactForm />} />
         </Routes>
         <Footer
-          isTabletOrMobile={isTabletOrMobile}
         />
       </Router>
     </div>

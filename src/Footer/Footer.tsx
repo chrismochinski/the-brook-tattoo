@@ -2,12 +2,7 @@ import "./Footer.scss";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter } from "../svg";
 
-interface FooterProps {
-  isTabletOrMobile: boolean;
-}
-
-export function Footer(props: FooterProps) {
-  const { isTabletOrMobile } = props;
+export function Footer() {
   return (
     <div className="footer">
       <div className="footerContentWrapper">

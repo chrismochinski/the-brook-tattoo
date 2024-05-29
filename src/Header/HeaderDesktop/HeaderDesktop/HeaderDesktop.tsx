@@ -5,7 +5,7 @@ import { SiteNavProps, pages } from "../../../App";
 import Logo from "../../../Images/brook-logo-nobg-rough.png";
 
 export function HeaderDesktop(props: SiteNavProps) {
-  const { selectedPage, setSelectedPage, isTabletOrMobile } = props;
+  const { selectedPage, setSelectedPage } = props;
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
