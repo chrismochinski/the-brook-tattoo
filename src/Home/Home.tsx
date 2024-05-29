@@ -2,7 +2,6 @@ import StoreFront from "../Images/brook-placeholder-front.jpeg";
 import JimboMain from "../../src/Images/jimbo-masked.png";
 import CarlieMain from "../../src/Images/carlie-masked.png";
 import "./Home.scss";
-import { Link } from "react-router-dom";
 import { BookNowButton } from "../BookNowButton/BookNowButton";
 
 export function Home() {
