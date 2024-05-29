@@ -30,8 +30,18 @@ export function HeaderTabletMobile(props: SiteNavProps) {
         src={Logo}
         alt="The Brook Tattoo Studio Header Logo"
       />
-      <div tabIndex={0} role="button" className="hamburger" onClick={toggleMenu}>
-        🍔
+      <div
+        tabIndex={0}
+        id="nav-icon"
+        role="button"
+        onClick={toggleMenu}
+        className={isOpen ? "open" : ""}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
       <nav className={`nav mobileNav ${isOpen ? "open" : ""}`}>
         {pages.map((page) => (

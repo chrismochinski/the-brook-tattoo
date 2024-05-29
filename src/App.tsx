@@ -26,7 +26,7 @@ function App() {
   const [selectedPage, setSelectedPage] = useState("home");
 
   const windowWidth = useWindowWidth();
-  const isTabletOrMobile = windowWidth <= 1024;
+  const isTabletOrMobile = windowWidth <= 900;
 
   useEffect(() => {
     console.log(selectedPage);
